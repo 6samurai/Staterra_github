@@ -1,0 +1,112 @@
+<?xml version="1.0" encoding="utf-8"?>
+<Project ToolsVersion="4.0" DefaultTargets="Build" xmlns="http://schemas.microsoft.com/developer/msbuild/2003">
+  <PropertyGroup>
+	<Configuration Condition=" '$(Configuration)' == '' ">Debug</Configuration>
+	<Platform Condition=" '$(Platform)' == '' ">AnyCPU</Platform>
+	<ProductVersion>10.0.20506</ProductVersion>
+	<SchemaVersion>2.0</SchemaVersion>
+	<ProjectGuid>{12866204-1F90-E094-3A84-7FBA0094224C}</ProjectGuid>
+	<OutputType>Library</OutputType>
+	<AppDesignerFolder>Properties</AppDesignerFolder>
+	<RootNamespace></RootNamespace>
+	<AssemblyName>Assembly-CSharp</AssemblyName>
+	<TargetFrameworkVersion>v3.5</TargetFrameworkVersion>
+	<FileAlignment>512</FileAlignment>
+	<BaseDirectory>Assets</BaseDirectory>
+  </PropertyGroup>
+  <PropertyGroup Condition=" '$(Configuration)|$(Platform)' == 'Debug|AnyCPU' ">
+	<DebugSymbols>true</DebugSymbols>
+	<DebugType>full</DebugType>
+	<Optimize>false</Optimize>
+	<OutputPath>Temp\bin\Debug\</OutputPath>
+	<DefineConstants>DEBUG;TRACE;UNITY_5_1_1;UNITY_5_1;UNITY_5;ENABLE_NEW_BUGREPORTER;ENABLE_2D_PHYSICS;ENABLE_4_6_FEATURES;ENABLE_AUDIO;ENABLE_CACHING;ENABLE_CLOTH;ENABLE_DUCK_TYPING;ENABLE_FRAME_DEBUGGER;ENABLE_GENERICS;ENABLE_HOME_SCREEN;ENABLE_IMAGEEFFECTS;ENABLE_LIGHT_PROBES_LEGACY;ENABLE_MICROPHONE;ENABLE_MULTIPLE_DISPLAYS;ENABLE_PHYSICS;ENABLE_PHYSICS_PHYSX3;ENABLE_PLUGIN_INSPECTOR;ENABLE_SHADOWS;ENABLE_SINGLE_INSTANCE_BUILD_SETTING;ENABLE_SPRITES;ENABLE_TERRAIN;ENABLE_UNET;ENABLE_UNITYEVENTS;ENABLE_VR;ENABLE_WEBCAM;ENABLE_WWW;ENABLE_CLOUD_SERVICES;ENABLE_CLOUD_SERVICES_ANALYTICS;ENABLE_CLOUD_SERVICES_UNET;ENABLE_CLOUD_LICENSE;ENABLE_AUDIOMIXER_SUSPEND;ENABLE_EDITOR_METRICS;INCLUDE_DYNAMIC_GI;INCLUDE_GI;INCLUDE_IL2CPP;INCLUDE_DIRECTX12;PLATFORM_SUPPORTS_MONO;RENDER_SOFTWARE_CURSOR;ENABLE_LOCALIZATION;UNITY_STANDALONE_WIN;UNITY_STANDALONE;ENABLE_SUBSTANCE;ENABLE_TEXTUREID_MAP;ENABLE_RUNTIME_GI;ENABLE_MOVIES;ENABLE_NETWORK;ENABLE_CRUNCH_TEXTURE_COMPRESSION;ENABLE_WEBSOCKET_HOST;ENABLE_MONO;ENABLE_PROFILER;DEBUG;TRACE;UNITY_ASSERTIONS;UNITY_EDITOR;UNITY_EDITOR_64;UNITY_EDITOR_WIN</DefineConstants>
+	<ErrorReport>prompt</ErrorReport>
+	<WarningLevel>4</WarningLevel>
+	<NoWarn>0169</NoWarn>
+  </PropertyGroup>
+  <PropertyGroup Condition=" '$(Configuration)|$(Platform)' == 'Release|AnyCPU' ">
+	<DebugType>pdbonly</DebugType>
+	<Optimize>true</Optimize>
+	<OutputPath>Temp\bin\Release\</OutputPath>
+	<DefineConstants>TRACE</DefineConstants>
+	<ErrorReport>prompt</ErrorReport>
+	<WarningLevel>4</WarningLevel>
+	<NoWarn>0169</NoWarn>
+  </PropertyGroup>
+  <ItemGroup>
+	<Reference Include="System" />
+    <Reference Include="System.XML" />
+	<Reference Include="System.Core" />
+	<Reference Include="System.Xml.Linq" />
+	<Reference Include="UnityEngine">
+	  <HintPath>C:/Program Files/Unity/Editor/Data/Managed/UnityEngine.dll</HintPath>
+	</Reference>
+	<Reference Include="UnityEditor">
+	  <HintPath>C:/Program Files/Unity/Editor/Data/Managed/UnityEditor.dll</HintPath>
+	</Reference>
+  </ItemGroup>
+  <ItemGroup>
+     <Compile Include="Assets\Scripts\Camera controls\Move_Camera.cs" />
+     <Compile Include="Assets\Scripts\Creatures\Main\Animal_parents.cs" />
+     <Compile Include="Assets\Scripts\Creatures\Main\Spawn_Kill_process.cs" />
+     <Compile Include="Assets\Scripts\Creatures\Main\Spawn_Kill_processv2.cs" />
+     <Compile Include="Assets\Scripts\Creatures\Main\Spawn_Kill_processv3.cs" />
+     <Compile Include="Assets\Scripts\Creatures\Main\Spawn_Kill_processv4.cs" />
+     <Compile Include="Assets\Scripts\Creatures\Main\Spawn_Kill_processv5.cs" />
+     <Compile Include="Assets\Scripts\Creatures\Main\Spawn_Kill_processv6.cs" />
+     <Compile Include="Assets\Scripts\Creatures\Main\Spawn_Kill_processv7.cs" />
+     <Compile Include="Assets\Scripts\Creatures\Main\Spawn_Kill_processv8.cs" />
+     <Compile Include="Assets\Scripts\Creatures\Main\Spawn_Kill_processv9.cs" />
+     <Compile Include="Assets\Scripts\Creatures\Sub-Sections\Water Biome\Animal_Section_Bogue.cs" />
+     <Compile Include="Assets\Scripts\Creatures\Sub-Sections\Water Biome\Animal_Section_Copepod.cs" />
+     <Compile Include="Assets\Scripts\Creatures\Sub-Sections\Water Biome\Animal_Section_Crab.cs" />
+     <Compile Include="Assets\Scripts\Creatures\Sub-Sections\Water Biome\Animal_Section_Dolphin.cs" />
+     <Compile Include="Assets\Scripts\Creatures\Sub-Sections\Water Biome\Animal_Section_Dummy_class.cs" />
+     <Compile Include="Assets\Scripts\Creatures\Sub-Sections\Water Biome\Animal_Section_Fighterplankton.cs" />
+     <Compile Include="Assets\Scripts\Creatures\Sub-Sections\Water Biome\Animal_Section_GulperShark.cs" />
+     <Compile Include="Assets\Scripts\Creatures\Sub-Sections\Water Biome\Animal_Section_HammerheadShark.cs" />
+     <Compile Include="Assets\Scripts\Creatures\Sub-Sections\Water Biome\Animal_Section_Jellyfish.cs" />
+     <Compile Include="Assets\Scripts\Creatures\Sub-Sections\Water Biome\Animal_Section_Octopus.cs" />
+     <Compile Include="Assets\Scripts\Creatures\Sub-Sections\Water Biome\Animal_Section_SeaUrchin.cs" />
+     <Compile Include="Assets\Scripts\Creatures\Sub-Sections\Water Biome\Animal_Section_Seabass.cs" />
+     <Compile Include="Assets\Scripts\Creatures\Sub-Sections\Water Biome\Animal_Section_Shrimp.cs" />
+     <Compile Include="Assets\Scripts\Creatures\Sub-Sections\Water Biome\Animal_Section_Squid.cs" />
+     <Compile Include="Assets\Scripts\Creatures\Sub-Sections\Water Biome\Animal_Section_Starfish.cs" />
+     <Compile Include="Assets\Scripts\Creatures\Sub-Sections\Water Biome\Animal_Section_Tuna.cs" />
+     <Compile Include="Assets\Scripts\Creatures\Sub-Sections\Water Biome\Animal_Section_Turtle.cs" />
+     <Compile Include="Assets\Scripts\Creatures\Type\Animal_Type_Base.cs" />
+     <Compile Include="Assets\Scripts\Creatures\Type\Animal_Type_Creeps.cs" />
+     <Compile Include="Assets\Scripts\Creatures\Type\Animal_Type_Crusties.cs" />
+     <Compile Include="Assets\Scripts\Creatures\Type\Animal_Type_Fish.cs" />
+     <Compile Include="Assets\Scripts\Creatures\Type\Animal_Type_Shell.cs" />
+     <Compile Include="Assets\Scripts\Other\Animal_properties.cs" />
+     <Compile Include="Assets\Scripts\Other\Spawner_basic.cs" />
+     <Compile Include="Assets\Scripts\World actions\Rotate world\Rotate_Camera.cs" />
+     <Compile Include="Assets\Scripts\World actions\Rotate world\Rotate_Camera_v2.cs" />
+     <Compile Include="Assets\Scripts\World actions\Rotate world\Rotate_Object.cs" />
+     <Compile Include="Assets\Scripts\World actions\Rotate world\Rotate_Object_basic.cs" />
+     <Compile Include="Assets\Scripts\World actions\Rotate world\Rotate_Objectv2.cs" />
+     <Compile Include="Assets\Scripts\World actions\Rotate world\Rotate_Objectv3.cs" />
+ <Reference Include="UnityEngine.UI">
+ <HintPath>C:/Program Files/Unity/Editor/Data/UnityExtensions/Unity/GUISystem/UnityEngine.UI.dll</HintPath>
+ </Reference>
+ <Reference Include="UnityEngine.Networking">
+ <HintPath>C:/Program Files/Unity/Editor/Data/UnityExtensions/Unity/Networking/UnityEngine.Networking.dll</HintPath>
+ </Reference>
+ <Reference Include="UnityEngine.Analytics">
+ <HintPath>C:/Program Files/Unity/Editor/Data/UnityExtensions/Unity/UnityAnalytics/UnityEngine.Analytics.dll</HintPath>
+ </Reference>
+ <Reference Include="UnityEditor.iOS.Extensions.Xcode">
+ <HintPath>C:/Program Files/Unity/Editor/Data/PlaybackEngines/iOSSupport/UnityEditor.iOS.Extensions.Xcode.dll</HintPath>
+ </Reference>
+  </ItemGroup>
+  <Import Project="$(MSBuildToolsPath)\Microsoft.CSharp.targets" />
+  <!-- To modify your build process, add your task inside one of the targets below and uncomment it. 
+	   Other similar extension points exist, see Microsoft.Common.targets.
+  <Target Name="BeforeBuild">
+  </Target>
+  <Target Name="AfterBuild">
+  </Target>
+  -->
+  
+</Project>
