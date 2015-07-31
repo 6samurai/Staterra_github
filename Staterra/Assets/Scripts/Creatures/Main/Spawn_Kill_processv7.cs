@@ -1,6 +1,6 @@
 using UnityEngine;
 using System.Collections;
-
+#if false
 public class Spawn_Kill_processv7 : MonoBehaviour {
 
 	public float timer; // for feeding cycle
@@ -932,4 +932,4 @@ public class Spawn_Kill_processv7 : MonoBehaviour {
 
 	}
 }
-
+#endif

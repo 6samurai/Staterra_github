@@ -65,7 +65,7 @@ public class Spawn_Kill_processv9 : MonoBehaviour {
 	int[] death = new int[17];
 
 
-	public GameObject Copepod_details;
+/*	public GameObject Copepod_details;
 	public GameObject SeaUrchin_details;
 	public GameObject Plankton_details;
 	public GameObject Shrimp_details;
@@ -81,14 +81,32 @@ public class Spawn_Kill_processv9 : MonoBehaviour {
 	public GameObject Tuna_details;
 	public GameObject Dolphin_details;
 	public GameObject Hammerheadshark_details;
-
+*/
 	public int death_counter =0;
 	public  int food_counter = 0;
 
 	public int eating_counter = 0;
 	public int lastindex=0;
 
+	public  Animal_Section_Fighterplankton plankton_class = new Animal_Section_Fighterplankton();
+	public  Animal_Section_Copepod copepod_class = new Animal_Section_Copepod();
+	public  Animal_Section_SeaUrchin seaurchin_class = new Animal_Section_SeaUrchin();
+	public  Animal_Section_Crab crab_class = new Animal_Section_Crab();
+	public  Animal_Section_Shrimp shrimp_class = new Animal_Section_Shrimp();
+	public  Animal_Section_Starfish starfish_class = new Animal_Section_Starfish();
+	public  Animal_Section_Bogue bogue_class = new Animal_Section_Bogue();
+	public  Animal_Section_Jellyfish jellyfish_class = new Animal_Section_Jellyfish();
+	public  Animal_Section_Squid squid_class = new Animal_Section_Squid();
+	public  Animal_Section_Octopus octopus_class = new Animal_Section_Octopus();
+	public  Animal_Section_Seabass seabass_class = new Animal_Section_Seabass();
+	public  Animal_Section_Turtle turtle_class = new Animal_Section_Turtle();
+	public  Animal_Section_GulperShark gulper_class = new Animal_Section_GulperShark();
+	public  Animal_Section_Tuna tuna_class = new Animal_Section_Tuna();
+	public  Animal_Section_HammerheadShark hammer_class = new Animal_Section_HammerheadShark();
+	public  Animal_Section_Dolphin dolphin_class = new Animal_Section_Dolphin();
 
+
+	
 	public bool[,] tiers = new bool[5, 2];
 	public bool [] tier_stage = new bool [4];
 	public bool active = false;
@@ -96,6 +114,7 @@ public class Spawn_Kill_processv9 : MonoBehaviour {
 	public int count =0 ;
 
 	public int[] temp_double_pop = new int[13];
+	public float timer2;
 
 	public void set_Active(){
 
@@ -114,13 +133,139 @@ public class Spawn_Kill_processv9 : MonoBehaviour {
 	}
 
 
+	void Create_Creature(){
+		
+		GameObject cntrl = GameObject.Find("Animal_Object_control");
+		Spawn_Kill_processv9 tier = cntrl.GetComponent<Spawn_Kill_processv9>();
+		
+		timer2 = Time.deltaTime + timer2;
+		if(Input.GetKeyUp(KeyCode.F1)){ // && timer>= Time.deltaTime + timer_limit){
+			
+			//tiers[0,0] = true;
+			//active = true;
+			timer2 = 0;
+			GameObject new_inst = Instantiate(Copepod, transform.position, transform.rotation) as GameObject;
+			Debug.Log ("create");
+			copepod_class.alive.Add(new_inst);
+			Debug.Log ("after create");
+			copepod_class.pop ++;
+			Debug.Log("after pop");
+			copepod_class.counter[0] ++;
+			Debug.Log("copepod_class.counter[0] ++;");
+			copepod_class.death[0]++;
+			Debug.Log ("death[0]++");
+			//	Destroy(GameObject.FindGameObjectWithTag("Copepod"));
+		}
+		
+		if(Input.GetKeyUp(KeyCode.F2)){// && timer>= Time.deltaTime + timer_limit){
+			//	tiers[0,0] = true;
+			//	active = true;
+			timer2 = 0;
+			GameObject new_inst = Instantiate(SeaUrchin, transform.position, transform.rotation) as GameObject;
+			
+			seaurchin_class.alive.Add(new_inst);
+			
+			seaurchin_class.pop ++;
+			seaurchin_class.counter[0] ++;
+			seaurchin_class.death[0]++;
+			//Debug.Log ("Death");
+			//	Destroy(GameObject.FindGameObjectWithTag("Copepod"));
+		}
+		
+		if(Input.GetKeyUp(KeyCode.F3) ){//&& timer>= Time.deltaTime + timer_limit){
+			//			tiers[0,0] = true;
+			//	Debug.Log("in spawner" + tier.tiers[0,0]+ " tier 1,0" + tier.tiers[0,1]);
+			//tier.set_Active();
+			if(tier.tier_stage[0] ==false){
+				tier.tiers[0,0] = true;
+				tier.tiers[0,1] = false;
+				tier.active = true;
+				tier.tier_stage[0] = true;
+			}
+			
+			
+			//tier.set_Active();
+			timer2 = 0;
+			
+			Debug.Log("in spawner" + tier.tiers[0,0]+ " tier 1,0" + tier.tiers[0,1]);
+			GameObject new_inst = Instantiate(Shrimp, transform.position, transform.rotation) as GameObject;
+			
+			shrimp_class.alive.Add(new_inst);
+			
+			shrimp_class.pop ++;
+			shrimp_class.counter[0] ++;
+			shrimp_class.death[0]++;
+			//Debug.Log ("Death");
+			//	Destroy(GameObject.FindGameObjectWithTag("Copepod"));
+		}
+		if(Input.GetKeyUp(KeyCode.F4)){// && timer>= Time.deltaTime + timer_limit){
+			if(tier.tier_stage[1] ==false){
+				tier.tiers[1,0] = true;
+				tier.tiers[1,1] = false;
+				tier.active = true;
+				tier.tier_stage[1] = true;
+			}
+			timer2 = 0;
+			GameObject new_inst = Instantiate(Jellyfish, transform.position, transform.rotation) as GameObject;
+			
+			jellyfish_class.alive.Add(new_inst);
+			
+			jellyfish_class.pop ++;
+			jellyfish_class.counter[0] ++;
+			jellyfish_class.death[0]++;
+			//Debug.Log ("Death");
+			//	Destroy(GameObject.FindGameObjectWithTag("Copepod"));
+		}
+		
+		
+		if(Input.GetKeyUp(KeyCode.F5)){// && timer>= Time.deltaTime + timer_limit){
+			if(tier.tier_stage[0] ==false){
+				tier.tiers[0,0] = true;
+				tier.tiers[0,1] = false;
+				tier.active = true;
+				tier.tier_stage[0] = true;
+			}
+			timer2 = 0;
+			GameObject new_inst = Instantiate(Crab, transform.position, transform.rotation) as GameObject;
+			
+			crab_class.alive.Add(new_inst);
+			
+			crab_class.pop ++;
+			crab_class.counter[0] ++;
+			crab_class.death[0]++;
+			//Debug.Log ("Death");
+			//	Destroy(GameObject.FindGameObjectWithTag("Copepod"));
+		}
+		if(Input.GetKeyUp(KeyCode.F6)){// && timer>= Time.deltaTime + timer_limit){
+			
+			if(tier.tier_stage[0] ==false){
+				tier.tiers[0,0] = true;
+				tier.tiers[0,1] = false;
+				tier.active = true;
+				tier.tier_stage[0] = true;
+			}
+			timer2 = 0;
+			GameObject new_inst = Instantiate(Bogue, transform.position, transform.rotation) as GameObject;
+			
+			bogue_class.alive.Add(new_inst);
+			
+			bogue_class.pop ++;
+			bogue_class.counter[0] ++;
+			bogue_class.death[0]++;
+			//Debug.Log ("Death");
+			//	Destroy(GameObject.FindGameObjectWithTag("Copepod"));
+		}
+
+
+	}
+
 	void Start () {
 
-		
+
 
 		timer_limit = 2f;
 
-		Copepod_details = GameObject.Find ("Copepod_Counter");
+		/*Copepod_details = GameObject.Find ("Copepod_Counter");
 		SeaUrchin_details = GameObject.Find ("SeaUrchin_Counter");
 		Shrimp_details = GameObject.Find ("Shrimp_Counter");
 		Jellyfish_details = GameObject.Find ("Jellyfish_Counter");
@@ -138,8 +283,9 @@ public class Spawn_Kill_processv9 : MonoBehaviour {
 		Tuna_details = GameObject.Find ("Dummy");
 		Dolphin_details = GameObject.Find ("Dummy");
 		Hammerheadshark_details = GameObject.Find ("Dummy");
-		plankton = GameObject.FindGameObjectWithTag ("Plankton");
-		plankton.GetComponentInChildren<Animal_parents> ().pop = 100000000;
+		plankton = GameObject.FindGameObjectWithTag ("Plankton");*/
+//		plankton.GetComponent<Animal_parents> ().pop = 100000000;
+		plankton_class.pop = 100000000;
 	}
 
 	void tierUpdates(){
@@ -159,25 +305,25 @@ public class Spawn_Kill_processv9 : MonoBehaviour {
 				tiers [j, 0] = true; 
 				tiers [j, 1] = true;
 
-				if(Copepod_details.GetComponent<Animal_Section_Copepod>().pop!=0){
+				if(copepod_class.pop!=0){
 					Debug.Log("tier 1");
-					for (int i =0; i<Copepod_details.GetComponent<Animal_Section_Copepod>().pop; i++) {
+					for (int i =0; i<copepod_class.pop; i++) {
 						GameObject new_creat = Instantiate (Copepod, copepod_spawn.transform.position, copepod_spawn.transform.rotation) as GameObject;
-						Copepod_details.GetComponent<Animal_parents> ().alive.Add (new_creat);
+						copepod_class.alive.Add (new_creat);
 					
 					}
-					temp_double_pop[0] += Copepod_details.GetComponent<Animal_parents> ().pop;
+					temp_double_pop[0] += copepod_class.pop;
 			
 				}
 
-				if(SeaUrchin_details.GetComponent<Animal_Section_SeaUrchin>().pop!=0){
-					for (int i =0; i<SeaUrchin_details.GetComponent<Animal_Section_SeaUrchin>().pop; i++) {
+				if(seaurchin_class.pop!=0){
+					for (int i =0; i<seaurchin_class.pop; i++) {
 						GameObject new_creat = Instantiate (SeaUrchin, seaurchin_spawn.transform.position, seaurchin_spawn.transform.rotation) as GameObject;
-						SeaUrchin_details.GetComponent<Animal_parents> ().alive.Add (new_creat);
+						seaurchin_class.alive.Add (new_creat);
 					
 					}
 
-					temp_double_pop[1] += Copepod_details.GetComponent<Animal_parents> ().pop;
+					temp_double_pop[1] += copepod_class.pop;
 		
 				}
 			}
@@ -188,34 +334,34 @@ public class Spawn_Kill_processv9 : MonoBehaviour {
 				tiers [j, 0] = true; 
 				tiers [j, 1] = true;
 
-				if(Crab_details.GetComponent<Animal_Section_Crab>().pop!=0){
+				if(crab_class.pop!=0){
 					Debug.Log("tier 2");
-					for (int i =0; i<Crab_details.GetComponent<Animal_Section_Crab>().pop; i++) {
+					for (int i =0; i<crab_class.pop; i++) {
 						GameObject new_creat = Instantiate (Crab, crab_spawn.transform.position, crab_spawn.transform.rotation) as GameObject;
-						Crab_details.GetComponent<Animal_parents> ().alive.Add (new_creat);
+						crab_class.alive.Add (new_creat);
 						
 					}
-					temp_double_pop[3] += Crab_details.GetComponent<Animal_parents> ().pop;
+					temp_double_pop[3] += crab_class.pop;
 			
 				}
-				if(Shrimp_details.GetComponent<Animal_Section_Shrimp>().pop!=0){
-					for (int i =0; i<Shrimp_details.GetComponent<Animal_Section_Copepod>().pop; i++) {
+				if(shrimp_class.pop!=0){
+					for (int i =0; i<shrimp_class.pop; i++) {
 						GameObject new_creat = Instantiate (Shrimp, shrimp_spawn.transform.position, shrimp_spawn.transform.rotation) as GameObject;
-						Shrimp_details.GetComponent<Animal_parents> ().alive.Add (new_creat);
+					shrimp_class.alive.Add (new_creat);
 						
 					}
-					temp_double_pop[2] += Shrimp_details.GetComponent<Animal_parents> ().pop;
+					temp_double_pop[2] += shrimp_class.pop;
 				
 				}
 
-				if(Bogue_details.GetComponent<Animal_Section_Bogue>().pop!=0){
-					for (int i =0; i<Bogue_details.GetComponent<Animal_Section_Copepod>().pop; i++) {
+				if(bogue_class.pop!=0){
+					for (int i =0; i<bogue_class.pop; i++) {
 						GameObject new_creat = Instantiate (Bogue, bogue_spawn.transform.position, bogue_spawn.transform.rotation) as GameObject;
-						Bogue_details.GetComponent<Animal_parents> ().alive.Add (new_creat);
+						bogue_class.alive.Add (new_creat);
 						
 					}
 
-					temp_double_pop[4] += Bogue_details.GetComponent<Animal_parents> ().pop;
+					temp_double_pop[4] += bogue_class.pop;
 				
 				}
 				
@@ -229,7 +375,7 @@ public class Spawn_Kill_processv9 : MonoBehaviour {
 
 	// Update is called once per frame
 	void FixedUpdate () {
-
+		Create_Creature ();
 
 		timer = timer + Time.deltaTime;
 
@@ -247,8 +393,8 @@ public class Spawn_Kill_processv9 : MonoBehaviour {
 
 
 			//basic resource (present in the game from start - created by system)
-			plankton = GameObject.FindGameObjectWithTag ("Plankton");
-			plankton.GetComponentInChildren<Animal_parents> ().pop = plankton.GetComponentInChildren<Animal_Section_Fighterplankton> ().pop + 10;
+	//		plankton = GameObject.FindGameObjectWithTag ("Plankton");
+	//		plankton.GetComponentInChildren<Animal_parents> ().pop = plankton.GetComponentInChildren<Animal_Section_Fighterplankton> ().pop + 10;
 			
 			creatures = GameObject.FindGameObjectsWithTag ("Creatures");
 		
@@ -260,7 +406,10 @@ public class Spawn_Kill_processv9 : MonoBehaviour {
 				//copepod =========================================================================
 				if(creature.GetComponent<Animal_parents>().pop !=0){
 				if (creature.gameObject.name == "Copepod_Counter"  ) {
+		
+						copepod_class.Death_Cycle();
 
+				/*	-------------TO GET PREV VERSION
 						for (int i =0; i< creature.GetComponent<Animal_Section_Copepod>().death[3]; i++) {
 							
 							lastindex = creature.GetComponent<Animal_parents> ().alive.Count - 1;
@@ -274,6 +423,9 @@ public class Spawn_Kill_processv9 : MonoBehaviour {
 					death[1]= creature.GetComponent<Animal_Section_Copepod>().death[1];
 					death[2]=creature.GetComponent<Animal_Section_Copepod>().death[2];
 					death[3]=creature.GetComponent<Animal_Section_Copepod>().death[3];*/
+
+							/*-------------TO GET PREV VERSION
+
 					death[4] =creature.GetComponent<Animal_Section_Copepod>().death[3];
 
 					//counter modify
@@ -307,6 +459,7 @@ public class Spawn_Kill_processv9 : MonoBehaviour {
 					creature.GetComponent<Animal_Section_Copepod>().death[3] = death [2];
 					creature.GetComponent<Animal_Section_Copepod>().death[4] =death[3];
 					creature.GetComponent<Animal_Section_Copepod>().death[0] =0;*/
+					
 
 				}
 
@@ -709,58 +862,57 @@ public class Spawn_Kill_processv9 : MonoBehaviour {
 
 				if (creature.gameObject.name == "Shrimp_Counter") {
 					
-					food = Copepod_details.GetComponent<Animal_parents> ().pop;
+					food = copepod_class.pop;
 					pops = creature.GetComponent<Animal_parents> ().pop; //population to feed
 
 					if (pops<= food && pops > 0 && food >0) {
 						Debug.Log("feed normal");
-							if(Copepod_details.GetComponentInChildren<Animal_parents>().pop > pops){
+							if(copepod_class.pop > pops){
 
 								for (int i =0; i<pops; i++) {
 									
-								lastindex = Copepod_details.GetComponent<Animal_parents> ().alive.Count - 1;
+								lastindex = copepod_class.alive.Count - 1;
 									if(lastindex>=0){
-									Destroy (Copepod_details.GetComponent<Animal_parents> ().alive [lastindex]);
-									Copepod_details.GetComponent<Animal_parents> ().alive.RemoveAt (lastindex);
+									GameObject.Destroy (copepod_class.alive [lastindex]);
+									copepod_class.alive.RemoveAt (lastindex);
 									}
 								}
 					
-								Copepod_details.GetComponent<Animal_parents> ().pop =  food - pops;
+								copepod_class.pop =  food - pops;
 
 							//-----------------------------NEW--------------------------------------------
 							//food_counter = food - pops;
 
-							if(Copepod_details.GetComponent<Animal_Section_Copepod>().counter[0]>=pops){
+							if(copepod_class.counter[0]>=pops){
 
-								Copepod_details.GetComponent<Animal_Section_Copepod>().counter[0] = Copepod_details.GetComponent<Animal_Section_Copepod>().counter[0] - food_counter;
+								copepod_class.counter[0] = copepod_class.counter[0] - food_counter;
 
 
-							}else if (Copepod_details.GetComponent<Animal_Section_Copepod>().counter[0]<pops){
+							}else if (copepod_class.counter[0]<pops){
 							
-								Copepod_details.GetComponent<Animal_Section_Copepod>().counter[1] =Copepod_details.GetComponent<Animal_Section_Copepod>().counter[1] -
-									(pops - Copepod_details.GetComponent<Animal_Section_Copepod>().counter[0]);
+								copepod_class.counter[1] =copepod_class.counter[1] - (pops - copepod_class.counter[0]);
 
-								Copepod_details.GetComponent<Animal_Section_Copepod>().counter[0] = 0;
+								copepod_class.counter[0] = 0;
 
 							}
 
 							for (int i =4; i>=0;i--){
 
 
-								death_counter = Copepod_details.GetComponent<Animal_Section_Copepod>().death[i];
+								death_counter = copepod_class.death[i];
 								food_counter = food_counter - death_counter ;
 
 								if(food_counter ==0){
-									Copepod_details.GetComponent<Animal_Section_Copepod>().death[i] = 0;
+									copepod_class.death[i] = 0;
 									break;
 									
 								} else	if(food_counter <0){
-									Copepod_details.GetComponent<Animal_Section_Copepod>().death[i] = food_counter *-1;
+									copepod_class.death[i] = food_counter *-1;
 									break;
 								}
 								
-								if(Copepod_details.GetComponent<Animal_Section_Copepod>().death[i] <0){
-									Copepod_details.GetComponent<Animal_Section_Copepod>().death[i] =	Copepod_details.GetComponent<Animal_Section_Copepod>().death[i] *-1;
+								if(copepod_class.death[i] <0){
+									copepod_class.death[i] =	copepod_class.death[i] *-1;
 								}
 	
 							}
@@ -769,7 +921,7 @@ public class Spawn_Kill_processv9 : MonoBehaviour {
 							}else	if (pops > food && pops >0 && food >0) {
 						Debug.Log("feed with few sources");
 
-						Copepod_details.GetComponent<Animal_parents> ().pop = food - pops;
+						copepod_class.pop = food - pops;
 						
 						for (int i =0; i<pops-food; i++) {
 
@@ -783,19 +935,19 @@ public class Spawn_Kill_processv9 : MonoBehaviour {
 							}
 
 							
-							if(Copepod_details.GetComponentInChildren<Animal_parents> ().alive.Count >0){
-								Destroy (Copepod_details.GetComponent<Animal_parents> ().alive [0]);
-								Copepod_details.GetComponent<Animal_parents> ().alive.RemoveAt (0);
+							if(copepod_class.alive.Count >0){
+								GameObject.Destroy (copepod_class.alive [0]);
+								copepod_class.alive.RemoveAt (0);
 
 						}
 
 						}
 
-						Copepod_details.GetComponent<Animal_parents> ().pop = 0;
-						Copepod_details.GetComponent<Animal_Section_Copepod> ().counter[0] = 0;
-						Copepod_details.GetComponent<Animal_Section_Copepod> ().counter[1] = 0;
-						Copepod_details.GetComponent<Animal_Section_Copepod> ().zeroDeath(	Copepod_details.GetComponent<Animal_Section_Copepod> ().death_limit);
-
+						copepod_class.pop = 0;
+						copepod_class.counter[0] = 0;
+						copepod_class.counter[1] = 0;
+					//	Copepod_details.GetComponent<Animal_Section_Copepod> ().zeroDeath(	Copepod_details.GetComponent<Animal_Section_Copepod> ().death_limit);
+							copepod_class.zeroDeath();
 						food_counter = food - pops;
 						for(int i =0; i <=2; i++){
 
@@ -829,11 +981,14 @@ public class Spawn_Kill_processv9 : MonoBehaviour {
 						for (int i =0; i<pops; i++) {
 							
 							lastindex = creature.GetComponent<Animal_parents> ().alive.Count - 1;
-							Destroy (Shrimp_details.GetComponent<Animal_parents> ().alive [lastindex]);
-							Shrimp_details.GetComponent<Animal_parents> ().alive.RemoveAt (lastindex);
+							GameObject.Destroy (shrimp_class.alive [lastindex]);
+							shrimp_class.alive.RemoveAt (lastindex);
 						}
-						creature.GetComponent<Animal_Section_Shrimp> ().zeroDeath(creature.GetComponent<Animal_Section_Shrimp> ().death_limit);
-						creature.GetComponent<Animal_Section_Shrimp> ().zeroCounter(creature.GetComponent<Animal_Section_Shrimp> ().feed_ratio);
+						//creature.GetComponent<Animal_Section_Shrimp> ().zeroDeath(creature.GetComponent<Animal_Section_Shrimp> ().death_limit);
+							creature.GetComponent<Animal_Section_Shrimp> ().zeroDeath();
+
+						//creature.GetComponent<Animal_Section_Shrimp> ().zeroCounter(creature.GetComponent<Animal_Section_Shrimp> ().feed_ratio);
+							creature.GetComponent<Animal_Section_Shrimp> ().zeroCounter();
 						creature.GetComponent<Animal_parents> ().pop = 0;
 					}
 					
@@ -844,8 +999,7 @@ public class Spawn_Kill_processv9 : MonoBehaviour {
 
 				if (creature.gameObject.name == "Jellyfish_Counter") {
 					
-					food = Copepod_details.GetComponent<Animal_parents> ().pop +Shrimp_details.GetComponent<Animal_parents> ().pop +
-						Bogue_details.GetComponent<Animal_parents> ().pop;
+					food = copepod_class.pop +shrimp_class.pop + bogue_class.pop;
 					pops = creature.GetComponent<Animal_parents> ().pop; //population to feed
 					eating_counter = creature.GetComponent<Animal_Section_Jellyfish> ().Feed_items();
 						Debug.Log ("eating_counter " + eating_counter);
@@ -860,12 +1014,15 @@ public class Spawn_Kill_processv9 : MonoBehaviour {
 						for (int i =0; i<pops; i++) {
 							
 							lastindex = creature.GetComponent<Animal_parents> ().alive.Count - 1;
-							Destroy (Jellyfish_details.GetComponent<Animal_parents> ().alive [lastindex]);
-							Jellyfish_details.GetComponent<Animal_parents> ().alive.RemoveAt (lastindex);
+							Destroy (jellyfish_class.alive [lastindex]);
+							jellyfish_class.alive.RemoveAt (lastindex);
 						}
-						Jellyfish_details.GetComponent<Animal_Section_Jellyfish> ().zeroDeath(Jellyfish_details.GetComponent<Animal_Section_Jellyfish> ().death_limit);
-						Jellyfish_details.GetComponent<Animal_Section_Jellyfish> ().zeroCounter(Jellyfish_details.GetComponent<Animal_Section_Jellyfish> ().repro_ratio);
-						Jellyfish_details.GetComponent<Animal_parents> ().pop = 0;
+					//	Jellyfish_details.GetComponent<Animal_Section_Jellyfish> ().zeroDeath(Jellyfish_details.GetComponent<Animal_Section_Jellyfish> ().death_limit);
+							jellyfish_class.zeroDeath();
+
+						//	Jellyfish_details.GetComponent<Animal_Section_Jellyfish> ().zeroCounter(Jellyfish_details.GetComponent<Animal_Section_Jellyfish> ().repro_ratio);
+							jellyfish_class.zeroCounter();
+								jellyfish_class.pop = 0;
 						
 
 						
@@ -875,47 +1032,51 @@ public class Spawn_Kill_processv9 : MonoBehaviour {
 						if(i == 0 ){
 
 							if(eating_counter==1 || eating_counter ==2 || eating_counter ==3 || (eating_counter ==0 && 
-								Jellyfish_details.GetComponent<Animal_parents> ().pop == Shrimp_details.GetComponent<Animal_parents> ().pop) ){
+								jellyfish_class.pop == shrimp_class.pop) ){
 										Debug.Log("eating in 0");
-										for (int j =0; j<Shrimp_details.GetComponent<Animal_parents> ().pop; j++) {
+										for (int j =0; j<shrimp_class.pop; j++) {
 											
-											lastindex = Shrimp_details.GetComponent<Animal_parents> ().alive.Count - 1;
+											lastindex = shrimp_class.alive.Count - 1;
 											
 											if(lastindex <= -1)
 												break;
 											
-											Destroy (Shrimp_details.GetComponent<Animal_parents> ().alive [lastindex]);
-											Shrimp_details.GetComponent<Animal_parents> ().alive.RemoveAt (lastindex);
+											Destroy (shrimp_class.alive [lastindex]);
+											shrimp_class.alive.RemoveAt (lastindex);
 											
 										}
 
-										Shrimp_details.GetComponent<Animal_Section_Shrimp> ().zeroDeath(Shrimp_details.GetComponent<Animal_Section_Shrimp> ().death_limit);
-										Shrimp_details.GetComponent<Animal_Section_Shrimp> ().zeroCounter(Shrimp_details.GetComponent<Animal_Section_Shrimp> ().repro_ratio);
-										food_counter =  Jellyfish_details.GetComponent<Animal_parents> ().pop - Shrimp_details.GetComponent<Animal_parents> ().pop  ;
-										Shrimp_details.GetComponent<Animal_parents> ().pop = 0;
+									//	Shrimp_details.GetComponent<Animal_Section_Shrimp> ().zeroDeath(Shrimp_details.GetComponent<Animal_Section_Shrimp> ().death_limit);
+										shrimp_class.zeroDeath();
+
+										//Shrimp_details.GetComponent<Animal_Section_Shrimp> ().zeroCounter(Shrimp_details.GetComponent<Animal_Section_Shrimp> ().repro_ratio);
+										shrimp_class.zeroCounter();
+
+										food_counter =  jellyfish_class.pop - shrimp_class.pop  ;
+										shrimp_class.pop = 0;
 									
 
 
-								} else if (eating_counter ==0 && Jellyfish_details.GetComponent<Animal_parents> ().pop < Shrimp_details.GetComponent<Animal_parents> ().pop){
-									food_counter =  Shrimp_details.GetComponent<Animal_parents> ().pop -Jellyfish_details.GetComponent<Animal_parents> ().pop  ;
+									} else if (eating_counter ==0 && jellyfish_class.pop < shrimp_class.pop){
+										food_counter =  shrimp_class.pop -jellyfish_class.pop  ;
 
 
 										for (int j =0; j<food_counter; j++) {
 											
-											lastindex = Shrimp_details.GetComponent<Animal_parents> ().alive.Count - 1;
+											lastindex = shrimp_class.alive.Count - 1;
 											
 											if(lastindex <= -1)
 												break;
 											
-											Destroy (Shrimp_details.GetComponent<Animal_parents> ().alive [lastindex]);
-											Shrimp_details.GetComponent<Animal_parents> ().alive.RemoveAt (lastindex);
+											Destroy (shrimp_class.alive [lastindex]);
+											shrimp_class.alive.RemoveAt (lastindex);
 											
 										}
 
 
-									Shrimp_details.GetComponent<Animal_Section_Shrimp> ().reduce_Death(food_counter, Shrimp_details.GetComponent<Animal_Section_Shrimp> ().death_limit);
-									Shrimp_details.GetComponent<Animal_Section_Shrimp> ().reduce_Count(food_counter, Shrimp_details.GetComponent<Animal_Section_Shrimp> ().repro_ratio);
-									Shrimp_details.GetComponent<Animal_Section_Shrimp> ().pop = food_counter;
+									shrimp_class.reduce_Death(food_counter, shrimp_class.death_limit);
+									shrimp_class.reduce_Count(food_counter, shrimp_class.repro_ratio);
+									shrimp_class.pop = food_counter;
 								}
 
 
@@ -923,44 +1084,48 @@ public class Spawn_Kill_processv9 : MonoBehaviour {
 						if(i == 1){
 									Debug.Log(" i = 1");
 									Debug.Log("food counter " + food_counter);
-									Debug.Log("copeopd pop " + Copepod_details.GetComponent<Animal_parents> ().pop);
-							if( eating_counter ==2 || eating_counter ==3 || (eating_counter ==1 && food_counter == Copepod_details.GetComponent<Animal_parents> ().pop) ){
+									Debug.Log("copeopd pop " + copepod_class.pop);
+							if( eating_counter ==2 || eating_counter ==3 || (eating_counter ==1 && food_counter == copepod_class.pop) ){
 										Debug.Log("eating in 1 eqaul or smaller");
 										
-										for (int j =0; j<Copepod_details.GetComponent<Animal_parents> ().pop; j++) {
+										for (int j =0; j<copepod_class.pop; j++) {
 											
-											lastindex = Copepod_details.GetComponent<Animal_parents> ().alive.Count - 1;
+											lastindex = copepod_class.alive.Count - 1;
 											if(lastindex <= -1)
 												break;
-											Destroy (Copepod_details.GetComponent<Animal_parents> ().alive [lastindex]);
-											Copepod_details.GetComponent<Animal_parents> ().alive.RemoveAt (lastindex);
+											Destroy (copepod_class.alive [lastindex]);
+											copepod_class.alive.RemoveAt (lastindex);
 										}
 
 
 
-										Copepod_details.GetComponent<Animal_Section_Copepod> ().zeroDeath(Copepod_details.GetComponent<Animal_Section_Copepod> ().death_limit);
-										Copepod_details.GetComponent<Animal_Section_Copepod> ().zeroCounter(Copepod_details.GetComponent<Animal_Section_Copepod> ().repro_ratio);
-										food_counter = food_counter - Copepod_details.GetComponent<Animal_parents> ().pop;
-										Copepod_details.GetComponent<Animal_parents> ().pop = 0;
+										//Copepod_details.GetComponent<Animal_Section_Copepod> ().zeroDeath(Copepod_details.GetComponent<Animal_Section_Copepod> ().death_limit);
+										copepod_class.zeroDeath();
 
-							} else if (eating_counter ==1 &&food_counter < Shrimp_details.GetComponent<Animal_parents> ().pop){
+										//Copepod_details.GetComponent<Animal_Section_Copepod> ().zeroCounter(Copepod_details.GetComponent<Animal_Section_Copepod> ().repro_ratio);
+										copepod_class.zeroCounter();
+
+										food_counter = food_counter - copepod_class.pop;
+										copepod_class.pop = 0;
+
+							} else if (eating_counter ==1 &&food_counter < shrimp_class.pop){
 										Debug.Log("eating 1 remover larger");
-										food_counter = Shrimp_details.GetComponent<Animal_parents> ().pop -food_counter  ;
+										food_counter = shrimp_class.pop -food_counter  ;
 									
 
 										for (int j =0; j<food_counter; j++) {
 											
-											lastindex = Copepod_details.GetComponent<Animal_parents> ().alive.Count - 1;
+											lastindex = copepod_class.alive.Count - 1;
 											if(lastindex <= -1)
 												break;
-											Destroy (Copepod_details.GetComponent<Animal_parents> ().alive [lastindex]);
-											Copepod_details.GetComponent<Animal_parents> ().alive.RemoveAt (lastindex);
+											Destroy (copepod_class.alive [lastindex]);
+											copepod_class.alive.RemoveAt (lastindex);
 										}
 									//	food_counter =  Copepod_details.GetComponent<Animal_parents> ().pop -Jellyfish_details.GetComponent<Animal_parents> ().pop  ;
 										
-										Copepod_details.GetComponent<Animal_Section_Copepod> ().reduce_Death(food_counter, Copepod_details.GetComponent<Animal_Section_Copepod> ().death_limit);
-										Copepod_details.GetComponent<Animal_Section_Copepod> ().reduce_Count(food_counter, Copepod_details.GetComponent<Animal_Section_Copepod> ().repro_ratio);
-										Copepod_details.GetComponent<Animal_Section_Copepod> ().pop = food_counter;
+										copepod_class.reduce_Death(food_counter, copepod_class.death_limit);
+										copepod_class.reduce_Count(food_counter, copepod_class.repro_ratio);
+										copepod_class.pop = food_counter;
 								}
 
 							}
@@ -971,27 +1136,31 @@ public class Spawn_Kill_processv9 : MonoBehaviour {
 								//Bogue_details.GetComponent<Animal_parents> ().pop = Shrimp_details.GetComponent<Animal_parents> ().pop - pops;
 								
 
-									if(  eating_counter ==3 || (eating_counter ==2 && food_counter == Bogue_details.GetComponent<Animal_parents> ().pop) ){
+									if(  eating_counter ==3 || (eating_counter ==2 && food_counter == bogue_class.pop) ){
 
-										for (int j =0; j<Bogue_details.GetComponent<Animal_parents> ().pop; j++) {
+										for (int j =0; j<bogue_class.pop; j++) {
 											
 											lastindex = Bogue.GetComponent<Animal_parents> ().alive.Count - 1;
 											if(lastindex <= -1)
 												break;
-											Destroy (Bogue.GetComponent<Animal_parents> ().alive [lastindex]);
-											Bogue_details.GetComponent<Animal_parents> ().alive.RemoveAt (lastindex);
+											Destroy (bogue_class.alive [lastindex]);
+											bogue_class.alive.RemoveAt (lastindex);
 										}
 
 
 
-										Bogue_details.GetComponent<Animal_Section_Bogue> ().zeroDeath(Bogue_details.GetComponent<Animal_Section_Bogue> ().death_limit);
-										Bogue_details.GetComponent<Animal_Section_Bogue> ().zeroCounter(Bogue_details.GetComponent<Animal_Section_Bogue> ().repro_ratio);
-										food_counter = food_counter - Bogue_details.GetComponent<Animal_parents> ().pop;
-										Bogue_details.GetComponent<Animal_parents> ().pop = 0;
+									//	Bogue_details.GetComponent<Animal_Section_Bogue> ().zeroDeath(Bogue_details.GetComponent<Animal_Section_Bogue> ().death_limit);
+										bogue_class.zeroDeath();
+
+									//	Bogue_details.GetComponent<Animal_Section_Bogue> ().zeroCounter(Bogue_details.GetComponent<Animal_Section_Bogue> ().repro_ratio);
+										bogue_class.zeroCounter();
+
+										food_counter = food_counter - bogue_class.pop;
+										bogue_class.pop = 0;
 										
-									} else if (eating_counter ==2 &&food_counter < Shrimp_details.GetComponent<Animal_parents> ().pop){
+									} else if (eating_counter ==2 &&food_counter < shrimp_class.pop){
 										
-										food_counter = Bogue_details.GetComponent<Animal_parents> ().pop -food_counter  ;
+										food_counter = bogue_class.pop -food_counter  ;
 
 
 										for (int j =0; j<food_counter; j++) {
@@ -999,14 +1168,14 @@ public class Spawn_Kill_processv9 : MonoBehaviour {
 											lastindex = Bogue.GetComponent<Animal_parents> ().alive.Count - 1;
 											if(lastindex <= -1)
 												break;
-											Destroy (Bogue.GetComponent<Animal_parents> ().alive [lastindex]);
-											Bogue_details.GetComponent<Animal_parents> ().alive.RemoveAt (lastindex);
+											Destroy (bogue_class.alive [lastindex]);
+											bogue_class.alive.RemoveAt (lastindex);
 										}
 										//	food_counter =  Copepod_details.GetComponent<Animal_parents> ().pop -Jellyfish_details.GetComponent<Animal_parents> ().pop  ;
 										
-										Bogue_details.GetComponent<Animal_Section_Bogue> ().reduce_Death(food_counter, Bogue_details.GetComponent<Animal_Section_Bogue> ().death_limit);
-										Bogue_details.GetComponent<Animal_Section_Bogue> ().reduce_Count(food_counter, Bogue_details.GetComponent<Animal_Section_Bogue> ().repro_ratio);
-										Bogue_details.GetComponent<Animal_Section_Bogue> ().pop = food_counter;
+										bogue_class.reduce_Death(food_counter, bogue_class.death_limit);
+										bogue_class.reduce_Count(food_counter, bogue_class.repro_ratio);
+										bogue_class.pop = food_counter;
 									}
 	
 							}
@@ -1017,12 +1186,12 @@ public class Spawn_Kill_processv9 : MonoBehaviour {
 								for (int j =0; j<food_counter; j++) {
 									
 									lastindex = creature.GetComponent<Animal_parents> ().alive.Count - 1;
-									Destroy (Jellyfish.GetComponent<Animal_parents> ().alive [lastindex]);
-									Jellyfish_details.GetComponent<Animal_parents> ().alive.RemoveAt (lastindex);
+									Destroy (jellyfish_class.alive [lastindex]);
+									jellyfish_class.alive.RemoveAt (lastindex);
 								}
-									Jellyfish_details.GetComponent<Animal_Section_Jellyfish> ().reduce_Death(food_counter, Jellyfish_details.GetComponent<Animal_Section_Jellyfish> ().death_limit);
-									Jellyfish_details.GetComponent<Animal_Section_Jellyfish> ().reduce_Count(food_counter, Jellyfish_details.GetComponent<Animal_Section_Jellyfish> ().repro_ratio);
-									Jellyfish_details.GetComponent<Animal_Section_Jellyfish> ().pop = food_counter;
+									jellyfish_class.reduce_Death(food_counter, jellyfish_class.death_limit);
+									jellyfish_class.reduce_Count(food_counter, jellyfish_class.repro_ratio);
+									jellyfish_class.pop = food_counter;
 								
 								
 							}
@@ -1037,56 +1206,55 @@ public class Spawn_Kill_processv9 : MonoBehaviour {
 
 					if (creature.gameObject.name == "Crab_Counter") {
 						
-						food = SeaUrchin_details.GetComponent<Animal_parents> ().pop;
+						food = seaurchin_class.pop;
 						pops = creature.GetComponent<Animal_parents> ().pop; //population to feed
 						
 						if (pops<= food && pops > 0 && food >0) {
 							Debug.Log("feed normal");
-							if(SeaUrchin_details.GetComponentInChildren<Animal_parents>().pop > pops){
+							if(seaurchin_class.pop > pops){
 								
 								for (int i =0; i<pops; i++) {
 									
-									lastindex = SeaUrchin_details.GetComponent<Animal_parents> ().alive.Count - 1;
-									Destroy (SeaUrchin_details.GetComponent<Animal_parents> ().alive [lastindex]);
-									SeaUrchin_details.GetComponent<Animal_parents> ().alive.RemoveAt (lastindex);
+									lastindex = seaurchin_class.alive.Count - 1;
+									Destroy (seaurchin_class.alive [lastindex]);
+									seaurchin_class.alive.RemoveAt (lastindex);
 								}
 								
-								SeaUrchin_details.GetComponent<Animal_parents> ().pop =  food - pops;
+								seaurchin_class.pop =  food - pops;
 								
 								//-----------------------------NEW--------------------------------------------
 								//food_counter = food - pops;
 								
-								if(SeaUrchin_details.GetComponent<Animal_Section_SeaUrchin>().counter[0]>=pops){
+								if(seaurchin_class.counter[0]>=pops){
 									
-									SeaUrchin_details.GetComponent<Animal_Section_SeaUrchin>().counter[0] = SeaUrchin_details.GetComponent<Animal_Section_SeaUrchin>().counter[0] - food_counter;
+									seaurchin_class.counter[0] = seaurchin_class.counter[0] - food_counter;
 									
 									
-								}else if (SeaUrchin_details.GetComponent<Animal_Section_SeaUrchin>().counter[0]<pops){
+								}else if (seaurchin_class.counter[0]<pops){
 									
-									SeaUrchin_details.GetComponent<Animal_Section_SeaUrchin>().counter[1] =SeaUrchin_details.GetComponent<Animal_Section_SeaUrchin>().counter[1] -
-										(pops - SeaUrchin_details.GetComponent<Animal_Section_SeaUrchin>().counter[0]);
+									seaurchin_class.counter[1] =seaurchin_class.counter[1] -(pops - seaurchin_class.counter[0]);
 									
-									SeaUrchin_details.GetComponent<Animal_Section_SeaUrchin>().counter[0] = 0;
+									seaurchin_class.counter[0] = 0;
 									
 								}
 								
 								for (int i =3; i>=0;i--){
 									
 									
-									death_counter = SeaUrchin_details.GetComponent<Animal_Section_SeaUrchin>().death[i];
+									death_counter = seaurchin_class.death[i];
 									food_counter = food_counter - death_counter ;
 									
 									if(food_counter ==0){
-										SeaUrchin_details.GetComponent<Animal_Section_SeaUrchin>().death[i] = 0;
+										seaurchin_class.death[i] = 0;
 										break;
 										
 									} else	if(food_counter <0){
-										SeaUrchin_details.GetComponent<Animal_Section_SeaUrchin>().death[i] = food_counter *-1;
+										seaurchin_class.death[i] = food_counter *-1;
 										break;
 									}
 									
-									if(SeaUrchin_details.GetComponent<Animal_Section_SeaUrchin>().death[i] <0){
-										SeaUrchin_details.GetComponent<Animal_Section_SeaUrchin>().death[i] =	SeaUrchin_details.GetComponent<Animal_Section_SeaUrchin>().death[i] *-1;
+									if(seaurchin_class.death[i] <0){
+										seaurchin_class.death[i] =	seaurchin_class.death[i] *-1;
 									}
 									
 								}
@@ -1095,7 +1263,7 @@ public class Spawn_Kill_processv9 : MonoBehaviour {
 						}else	if (pops > food && pops >0 && food >0) {
 							Debug.Log("feed with few sources");
 							
-							SeaUrchin_details.GetComponent<Animal_parents> ().pop = food - pops;
+							seaurchin_class.pop = food - pops;
 							
 							for (int i =0; i<pops-food; i++) {
 								
@@ -1109,19 +1277,22 @@ public class Spawn_Kill_processv9 : MonoBehaviour {
 								}
 								
 								
-								if(SeaUrchin_details.GetComponentInChildren<Animal_parents> ().alive.Count >0){
-									Destroy (SeaUrchin_details.GetComponent<Animal_parents> ().alive [0]);
-									SeaUrchin_details.GetComponent<Animal_parents> ().alive.RemoveAt (0);
+								if(seaurchin_class.alive.Count >0){
+									Destroy (seaurchin_class.alive [0]);
+									seaurchin_class.alive.RemoveAt (0);
 									
 								}
 								
 							}
 							
-							SeaUrchin_details.GetComponent<Animal_parents> ().pop = 0;
-							SeaUrchin_details.GetComponent<Animal_Section_Copepod> ().counter[0] = 0;
-							SeaUrchin_details.GetComponent<Animal_Section_Copepod> ().counter[1] = 0;
-							SeaUrchin_details.GetComponent<Animal_Section_Copepod> ().zeroDeath(	SeaUrchin_details.GetComponent<Animal_Section_SeaUrchin> ().death_limit);
-							
+							seaurchin_class.pop = 0;
+							seaurchin_class.counter[0] = 0;
+							seaurchin_class.counter[1] = 0;
+
+
+						//	SeaUrchin_details.GetComponent<Animal_Section_Copepod> ().zeroDeath(	SeaUrchin_details.GetComponent<Animal_Section_SeaUrchin> ().death_limit);
+							seaurchin_class.zeroDeath();
+
 							food_counter = food - pops;
 							for(int i =0; i <=2; i++){
 								
@@ -1157,14 +1328,18 @@ public class Spawn_Kill_processv9 : MonoBehaviour {
 								lastindex = creature.GetComponent<Animal_parents> ().alive.Count - 1;
 								Debug.Log("zero2");
 								if(lastindex>=0){
-								Destroy (Crab_details.GetComponent<Animal_parents> ().alive [lastindex]);
-								Crab_details.GetComponent<Animal_parents> ().alive.RemoveAt (lastindex);
+								Destroy (crab_class.alive [lastindex]);
+								crab_class.alive.RemoveAt (lastindex);
 									Debug.Log("zero3");
 								}
 							}
 							Debug.Log("zero4");
-							creature.GetComponent<Animal_Section_Crab> ().zeroDeath(creature.GetComponent<Animal_Section_Crab> ().death_limit);
-							creature.GetComponent<Animal_Section_Crab> ().zeroCounter(creature.GetComponent<Animal_Section_Crab> ().feed_ratio);
+						//	creature.GetComponent<Animal_Section_Crab> ().zeroDeath(creature.GetComponent<Animal_Section_Crab> ().death_limit);
+							creature.GetComponent<Animal_Section_Crab> ().zeroDeath();
+
+							//creature.GetComponent<Animal_Section_Crab> ().zeroCounter(creature.GetComponent<Animal_Section_Crab> ().feed_ratio);
+							creature.GetComponent<Animal_Section_Crab> ().zeroCounter();
+
 							creature.GetComponent<Animal_parents> ().pop = 0;
 						}
 						
@@ -1176,8 +1351,7 @@ public class Spawn_Kill_processv9 : MonoBehaviour {
 					
 					if (creature.gameObject.name == "Bogue_Counter") {
 						
-						food = Copepod_details.GetComponent<Animal_parents> ().pop +Shrimp_details.GetComponent<Animal_parents> ().pop +
-							Bogue_details.GetComponent<Animal_parents> ().pop;
+						food = copepod_class.pop +shrimp_class.pop +bogue_class.pop;
 						pops = creature.GetComponent<Animal_parents> ().pop; //population to feed
 						eating_counter = creature.GetComponent<Animal_Section_Bogue> ().Feed_items();
 						Debug.Log ("eating_counter " + eating_counter);
@@ -1192,12 +1366,16 @@ public class Spawn_Kill_processv9 : MonoBehaviour {
 							for (int i =0; i<pops; i++) {
 								
 								lastindex = creature.GetComponent<Animal_parents> ().alive.Count - 1;
-								Destroy (Bogue_details.GetComponent<Animal_parents> ().alive [lastindex]);
-								Bogue_details.GetComponent<Animal_parents> ().alive.RemoveAt (lastindex);
+								Destroy (bogue_class.alive [lastindex]);
+								bogue_class.alive.RemoveAt (lastindex);
 							}
-							Bogue_details.GetComponent<Animal_Section_Bogue> ().zeroDeath(Bogue_details.GetComponent<Animal_Section_Bogue> ().death_limit);
-							Bogue_details.GetComponent<Animal_Section_Bogue> ().zeroCounter(Bogue_details.GetComponent<Animal_Section_Bogue> ().repro_ratio);
-							Bogue_details.GetComponent<Animal_parents> ().pop = 0;
+						//	Bogue_details.GetComponent<Animal_Section_Bogue> ().zeroDeath(Bogue_details.GetComponent<Animal_Section_Bogue> ().death_limit);
+							bogue_class.zeroDeath();
+
+						//	Bogue_details.GetComponent<Animal_Section_Bogue> ().zeroCounter(Bogue_details.GetComponent<Animal_Section_Bogue> ().repro_ratio);
+							bogue_class.zeroCounter();
+
+							bogue_class.pop = 0;
 							
 							
 							
@@ -1206,45 +1384,49 @@ public class Spawn_Kill_processv9 : MonoBehaviour {
 							for(int i =0; i <=eating_counter;i++){
 								if(i == 0 ){
 									
-									if(eating_counter==1 || eating_counter ==2 ||  (eating_counter ==0 && Bogue_details.GetComponent<Animal_parents> ().pop == Copepod_details.GetComponent<Animal_parents> ().pop) ){
+									if(eating_counter==1 || eating_counter ==2 ||  (eating_counter ==0 && bogue_class.pop == copepod_class.pop) ){
 										Debug.Log("eating in 0");
-										for (int j =0; j<Copepod_details.GetComponent<Animal_parents> ().pop; j++) {
+										for (int j =0; j<copepod_class.pop; j++) {
 											
-											lastindex = Copepod_details.GetComponent<Animal_parents> ().alive.Count - 1;
+											lastindex = copepod_class.alive.Count - 1;
 											
 											if(lastindex <= -1)
 												break;
 											
-											Destroy (Copepod_details.GetComponent<Animal_parents> ().alive [lastindex]);
-											Copepod_details.GetComponent<Animal_parents> ().alive.RemoveAt (lastindex);
+											Destroy (copepod_class.alive [lastindex]);
+											copepod_class.alive.RemoveAt (lastindex);
 											
 										}
 										
-										Copepod_details.GetComponent<Animal_Section_Copepod> ().zeroDeath(Copepod_details.GetComponent<Animal_Section_Shrimp> ().death_limit);
-										Copepod_details.GetComponent<Animal_Section_Copepod> ().zeroCounter(Copepod_details.GetComponent<Animal_Section_Shrimp> ().repro_ratio);
-										food_counter =  Bogue_details.GetComponent<Animal_parents> ().pop - Copepod_details.GetComponent<Animal_parents> ().pop  ;
-										Copepod_details.GetComponent<Animal_parents> ().pop = 0;
+									//	Copepod_details.GetComponent<Animal_Section_Copepod> ().zeroDeath(Copepod_details.GetComponent<Animal_Section_Shrimp> ().death_limit);
+										copepod_class.zeroDeath();
+
+									//	Copepod_details.GetComponent<Animal_Section_Copepod> ().zeroCounter(Copepod_details.GetComponent<Animal_Section_Shrimp> ().repro_ratio);
+										copepod_class.zeroCounter();
+
+										food_counter =  bogue_class.pop - copepod_class.pop  ;
+										copepod_class.pop = 0;
 										
 										
 										
-									} else if (eating_counter ==0 && Bogue_details.GetComponent<Animal_parents> ().pop < Copepod_details.GetComponent<Animal_parents> ().pop){
-										food_counter =  Copepod_details.GetComponent<Animal_parents> ().pop -Bogue_details.GetComponent<Animal_parents> ().pop  ;
+									} else if (eating_counter ==0 && bogue_class.pop < copepod_class.pop){
+										food_counter =  copepod_class.pop - bogue_class.pop  ;
 										
 										
 										for (int j =0; j<food_counter; j++) {
 											
-											lastindex = Copepod_details.GetComponent<Animal_parents> ().alive.Count - 1;
+											lastindex = copepod_class.alive.Count - 1;
 											
 											if(lastindex <= -1)
 												break;
 											
-											Destroy (Copepod_details.GetComponent<Animal_parents> ().alive [lastindex]);
-											Copepod_details.GetComponent<Animal_parents> ().alive.RemoveAt (lastindex);
+											Destroy (copepod_class.alive [lastindex]);
+											copepod_class.alive.RemoveAt (lastindex);
 											
 										}
-										Copepod_details.GetComponent<Animal_Section_Copepod> ().reduce_Death(food_counter, Copepod_details.GetComponent<Animal_Section_Shrimp> ().death_limit);
-										Copepod_details.GetComponent<Animal_Section_Copepod> ().reduce_Count(food_counter, Copepod_details.GetComponent<Animal_Section_Shrimp> ().repro_ratio);
-										Copepod_details.GetComponent<Animal_Section_Copepod> ().pop = food_counter;
+										copepod_class.reduce_Death(food_counter, copepod_class.death_limit);
+										copepod_class.reduce_Count(food_counter, copepod_class.repro_ratio);
+										copepod_class.pop = food_counter;
 									}
 									
 									
@@ -1252,44 +1434,48 @@ public class Spawn_Kill_processv9 : MonoBehaviour {
 								if(i == 1){
 									Debug.Log(" i = 1");
 									Debug.Log("food counter " + food_counter);
-									Debug.Log("copeopd pop " + Shrimp_details.GetComponent<Animal_parents> ().pop);
-									if( eating_counter ==2 ||(eating_counter ==1 && food_counter == Shrimp_details.GetComponent<Animal_parents> ().pop) ){
+									Debug.Log("shrimp pop " + shrimp_class.pop);
+									if( eating_counter ==2 ||(eating_counter ==1 && food_counter == shrimp_class.pop) ){
 										Debug.Log("eating in 1 eqaul or smaller");
 										
-										for (int j =0; j<Shrimp_details.GetComponent<Animal_parents> ().pop; j++) {
+										for (int j =0; j<shrimp_class.pop; j++) {
 											
-											lastindex = Shrimp_details.GetComponent<Animal_parents> ().alive.Count - 1;
+											lastindex = shrimp_class.alive.Count - 1;
 											if(lastindex <= -1)
 												break;
-											Destroy (Shrimp_details.GetComponent<Animal_parents> ().alive [lastindex]);
-											Shrimp_details.GetComponent<Animal_parents> ().alive.RemoveAt (lastindex);
+											Destroy (shrimp_class.alive [lastindex]);
+											shrimp_class.alive.RemoveAt (lastindex);
 										}
+
 										
+									//	Shrimp_details.GetComponent<Animal_Section_Shrimp> ().zeroDeath(Shrimp_details.GetComponent<Animal_Section_Shrimp> ().death_limit);
+										shrimp_class.zeroDeath();
+
+										//Shrimp_details.GetComponent<Animal_Section_Shrimp> ().zeroCounter(Shrimp_details.GetComponent<Animal_Section_Shrimp> ().repro_ratio);
+									
+										shrimp_class.zeroCounter();
+
+										food_counter = food_counter - shrimp_class.pop;
+										shrimp_class.pop = 0;
 										
-										
-										Shrimp_details.GetComponent<Animal_Section_Shrimp> ().zeroDeath(Shrimp_details.GetComponent<Animal_Section_Shrimp> ().death_limit);
-										Shrimp_details.GetComponent<Animal_Section_Shrimp> ().zeroCounter(Shrimp_details.GetComponent<Animal_Section_Shrimp> ().repro_ratio);
-										food_counter = food_counter - Shrimp_details.GetComponent<Animal_parents> ().pop;
-										Shrimp_details.GetComponent<Animal_parents> ().pop = 0;
-										
-									} else if (eating_counter ==1 &&food_counter < Shrimp_details.GetComponent<Animal_parents> ().pop){
+									} else if (eating_counter ==1 &&food_counter < shrimp_class.pop){
 										Debug.Log("eating 1 remover larger");
-										food_counter = Shrimp_details.GetComponent<Animal_parents> ().pop -food_counter  ;
+										food_counter = shrimp_class.pop -food_counter  ;
 										
 										
 										for (int j =0; j<food_counter; j++) {
 											
-											lastindex = Shrimp_details.GetComponent<Animal_parents> ().alive.Count - 1;
+											lastindex = shrimp_class.alive.Count - 1;
 											if(lastindex <= -1)
 												break;
-											Destroy (Shrimp_details.GetComponent<Animal_parents> ().alive [lastindex]);
-											Shrimp_details.GetComponent<Animal_parents> ().alive.RemoveAt (lastindex);
+											Destroy (shrimp_class.alive [lastindex]);
+											shrimp_class.alive.RemoveAt (lastindex);
 										}
 										//	food_counter =  Copepod_details.GetComponent<Animal_parents> ().pop -Jellyfish_details.GetComponent<Animal_parents> ().pop  ;
 										
-										Shrimp_details.GetComponent<Animal_Section_Shrimp> ().reduce_Death(food_counter, Shrimp_details.GetComponent<Animal_Section_Shrimp> ().death_limit);
-										Shrimp_details.GetComponent<Animal_Section_Shrimp> ().reduce_Count(food_counter, Shrimp_details.GetComponent<Animal_Section_Shrimp> ().repro_ratio);
-										Shrimp_details.GetComponent<Animal_Section_Shrimp> ().pop = food_counter;
+										shrimp_class.reduce_Death(food_counter, shrimp_class.death_limit);
+										shrimp_class.reduce_Count(food_counter, shrimp_class.repro_ratio);
+										shrimp_class.pop = food_counter;
 									}
 									
 								}
@@ -1303,11 +1489,11 @@ public class Spawn_Kill_processv9 : MonoBehaviour {
 										lastindex = creature.GetComponent<Animal_parents> ().alive.Count - 1;
 
 										Destroy (Bogue.GetComponent<Animal_parents> ().alive [lastindex]);
-										Bogue_details.GetComponent<Animal_parents> ().alive.RemoveAt (lastindex);
+										bogue_class.alive.RemoveAt (lastindex);
 									}
-									Bogue_details.GetComponent<Animal_Section_Jellyfish> ().reduce_Death(food_counter, Bogue_details.GetComponent<Animal_Section_Bogue> ().death_limit);
-									Bogue_details.GetComponent<Animal_Section_Jellyfish> ().reduce_Count(food_counter, Bogue_details.GetComponent<Animal_Section_Bogue> ().repro_ratio);
-									Bogue_details.GetComponent<Animal_Section_Jellyfish> ().pop = food_counter;
+									bogue_class.reduce_Death(food_counter, bogue_class.death_limit);
+									bogue_class.reduce_Count(food_counter, bogue_class.repro_ratio);
+									bogue_class.pop = food_counter;
 									
 									
 								}
@@ -1500,13 +1686,13 @@ public class Spawn_Kill_processv9 : MonoBehaviour {
 				tiers [0, 0] = false;
 
 				Debug.Log("in second part, area 1");
-				Copepod_details.GetComponent<Animal_parents> ().death [0] += temp_double_pop[0];
-				Copepod_details.GetComponent<Animal_parents> ().counter [0] += temp_double_pop[0];
-				Copepod_details.GetComponent<Animal_parents> ().pop +=temp_double_pop[0];
+				copepod_class.death [0] += temp_double_pop[0];
+				copepod_class.counter [0] += temp_double_pop[0];
+				copepod_class.pop +=temp_double_pop[0];
 
-				SeaUrchin_details.GetComponent<Animal_parents> ().death [0] += temp_double_pop[1];
-				SeaUrchin_details.GetComponent<Animal_parents> ().counter [0] += temp_double_pop[1];
-				SeaUrchin_details.GetComponent<Animal_parents> ().pop +=temp_double_pop[1];
+				seaurchin_class.death [0] += temp_double_pop[1];
+				seaurchin_class.counter [0] += temp_double_pop[1];
+				seaurchin_class.pop +=temp_double_pop[1];
 
 
 
@@ -1516,26 +1702,26 @@ public class Spawn_Kill_processv9 : MonoBehaviour {
 				tiers [1, 1] = false;
 				tiers [1, 0] = false;
 				Debug.Log("in second part, area 2");
-				Copepod_details.GetComponent<Animal_parents> ().death [0] += temp_double_pop[0];
-				Copepod_details.GetComponent<Animal_parents> ().counter [0] += temp_double_pop[0];
-				Copepod_details.GetComponent<Animal_parents> ().pop +=temp_double_pop[0];
+				copepod_class.death [0] += temp_double_pop[0];
+				copepod_class.counter [0] += temp_double_pop[0];
+				copepod_class.pop +=temp_double_pop[0];
 				
-				SeaUrchin_details.GetComponent<Animal_parents> ().death [0] += temp_double_pop[1];
-				SeaUrchin_details.GetComponent<Animal_parents> ().counter [0] += temp_double_pop[1];
-				SeaUrchin_details.GetComponent<Animal_parents> ().pop +=temp_double_pop[1];
+				seaurchin_class.death [0] += temp_double_pop[1];
+				seaurchin_class.counter [0] += temp_double_pop[1];
+				seaurchin_class.pop +=temp_double_pop[1];
 
 
-				Shrimp_details.GetComponent<Animal_parents> ().death [0] += temp_double_pop[2];
-				Shrimp_details.GetComponent<Animal_parents> ().counter [0] += temp_double_pop[2];
-				Shrimp_details.GetComponent<Animal_parents> ().pop +=temp_double_pop[2];
+				shrimp_class.death [0] += temp_double_pop[2];
+				shrimp_class.counter [0] += temp_double_pop[2];
+				shrimp_class.pop +=temp_double_pop[2];
 				
-				Crab_details.GetComponent<Animal_parents> ().death [0] += temp_double_pop[3];
-				Crab_details.GetComponent<Animal_parents> ().counter [0] += temp_double_pop[3];
-				Crab_details.GetComponent<Animal_parents> ().pop +=temp_double_pop[3];
+				crab_class.death [0] += temp_double_pop[3];
+				crab_class.counter [0] += temp_double_pop[3];
+				crab_class.pop +=temp_double_pop[3];
 
-				Bogue_details.GetComponent<Animal_parents> ().death [0] += temp_double_pop[4];
-				Bogue_details.GetComponent<Animal_parents> ().counter [0] += temp_double_pop[4];
-				Bogue_details.GetComponent<Animal_parents> ().pop +=temp_double_pop[4];
+				bogue_class.death [0] += temp_double_pop[4];
+				bogue_class.counter [0] += temp_double_pop[4];
+				bogue_class.pop +=temp_double_pop[4];
 
 
 			}

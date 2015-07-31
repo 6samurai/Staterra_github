@@ -11,6 +11,25 @@ public class Spawner_basic : MonoBehaviour {
 	public float timer2; // for feeding cycle
 	public float timer_limit2;
 
+	public  Animal_Section_Fighterplankton plankton_class = new Animal_Section_Fighterplankton();
+	public  Animal_Section_Copepod copepod_class = new Animal_Section_Copepod();
+	public  Animal_Section_SeaUrchin seaurchin_class = new Animal_Section_SeaUrchin();
+	public  Animal_Section_Crab crab_class = new Animal_Section_Crab();
+	public  Animal_Section_Shrimp shrimp_class = new Animal_Section_Shrimp();
+	public  Animal_Section_Starfish starfish_class = new Animal_Section_Starfish();
+	public  Animal_Section_Bogue bogue_class = new Animal_Section_Bogue();
+	public  Animal_Section_Jellyfish jellyfish_class = new Animal_Section_Jellyfish();
+	public  Animal_Section_Squid squid_class = new Animal_Section_Squid();
+	public  Animal_Section_Octopus octopus_class = new Animal_Section_Octopus();
+	public  Animal_Section_Seabass seabass_class = new Animal_Section_Seabass();
+	public  Animal_Section_Turtle turtle_class = new Animal_Section_Turtle();
+	public  Animal_Section_GulperShark gulper_class = new Animal_Section_GulperShark();
+	public  Animal_Section_Tuna tuna_class = new Animal_Section_Tuna();
+	public  Animal_Section_HammerheadShark hammer_class = new Animal_Section_HammerheadShark();
+	public  Animal_Section_Dolphin dolphin_class = new Animal_Section_Dolphin();
+
+
+
 	//public GameObject tier;
 
 
@@ -37,11 +56,11 @@ public class Spawner_basic : MonoBehaviour {
 			timer2 = 0;
 			GameObject new_inst = Instantiate(create_copepod, transform.position, transform.rotation) as GameObject;
 
-			GameObject.Find("Copepod_Counter").GetComponent<Animal_parents>().alive.Add(new_inst);
+			copepod_class.alive.Add(new_inst);
 
-			GameObject.Find("Copepod_Counter").GetComponent<Animal_parents>().pop ++;
-			GameObject.Find("Copepod_Counter").GetComponent<Animal_Section_Copepod>().counter[0] ++;
-			GameObject.Find("Copepod_Counter").GetComponent<Animal_Section_Copepod>().death[0]++;
+			copepod_class.pop ++;
+			copepod_class.counter[0] ++;
+			copepod_class.death[0]++;
 			//Debug.Log ("Death");
 		//	Destroy(GameObject.FindGameObjectWithTag("Copepod"));
 		}
@@ -52,11 +71,11 @@ public class Spawner_basic : MonoBehaviour {
 			timer2 = 0;
 			GameObject new_inst = Instantiate(create_seaurchin, transform.position, transform.rotation) as GameObject;
 			
-			GameObject.Find("SeaUrchin_Counter").GetComponent<Animal_parents>().alive.Add(new_inst);
+			seaurchin_class.alive.Add(new_inst);
 			
-			GameObject.Find("SeaUrchin_Counter").GetComponent<Animal_parents>().pop ++;
-			GameObject.Find("SeaUrchin_Counter").GetComponent<Animal_Section_SeaUrchin>().counter[0] ++;
-			GameObject.Find("SeaUrchin_Counter").GetComponent<Animal_Section_SeaUrchin>().death[0]++;
+			seaurchin_class.pop ++;
+			seaurchin_class.counter[0] ++;
+			seaurchin_class.death[0]++;
 			//Debug.Log ("Death");
 			//	Destroy(GameObject.FindGameObjectWithTag("Copepod"));
 		}
@@ -79,11 +98,11 @@ public class Spawner_basic : MonoBehaviour {
 			Debug.Log("in spawner" + tier.tiers[0,0]+ " tier 1,0" + tier.tiers[0,1]);
 			GameObject new_inst = Instantiate(create_shrimp, transform.position, transform.rotation) as GameObject;
 			
-			GameObject.Find("Shrimp_Counter").GetComponent<Animal_parents>().alive.Add(new_inst);
+			shrimp_class.alive.Add(new_inst);
 			
-			GameObject.Find("Shrimp_Counter").GetComponent<Animal_parents>().pop ++;
-			GameObject.Find("Shrimp_Counter").GetComponent<Animal_Section_Shrimp>().counter[0] ++;
-			GameObject.Find("Shrimp_Counter").GetComponent<Animal_Section_Shrimp>().death[0]++;
+			shrimp_class.pop ++;
+			shrimp_class.counter[0] ++;
+			shrimp_class.death[0]++;
 			//Debug.Log ("Death");
 			//	Destroy(GameObject.FindGameObjectWithTag("Copepod"));
 		}
@@ -97,11 +116,11 @@ public class Spawner_basic : MonoBehaviour {
 			timer2 = 0;
 			GameObject new_inst = Instantiate(create_jellyfish, transform.position, transform.rotation) as GameObject;
 			
-			GameObject.Find("Jellyfish_Counter").GetComponent<Animal_parents>().alive.Add(new_inst);
+			jellyfish_class.alive.Add(new_inst);
 			
-			GameObject.Find("Jellyfish_Counter").GetComponent<Animal_parents>().pop ++;
-			GameObject.Find("Jellyfish_Counter").GetComponent<Animal_Section_Jellyfish>().counter[0] ++;
-			GameObject.Find("Jellyfish_Counter").GetComponent<Animal_Section_Jellyfish>().death[0]++;
+			jellyfish_class.pop ++;
+			jellyfish_class.counter[0] ++;
+			jellyfish_class.death[0]++;
 			//Debug.Log ("Death");
 			//	Destroy(GameObject.FindGameObjectWithTag("Copepod"));
 		}
@@ -117,11 +136,11 @@ public class Spawner_basic : MonoBehaviour {
 			timer2 = 0;
 			GameObject new_inst = Instantiate(create_crab, transform.position, transform.rotation) as GameObject;
 			
-			GameObject.Find("Crab_Counter").GetComponent<Animal_parents>().alive.Add(new_inst);
+			crab_class.alive.Add(new_inst);
 			
-			GameObject.Find("Crab_Counter").GetComponent<Animal_parents>().pop ++;
-			GameObject.Find("Crab_Counter").GetComponent<Animal_Section_Crab>().counter[0] ++;
-			GameObject.Find("Crab_Counter").GetComponent<Animal_Section_Crab>().death[0]++;
+			crab_class.pop ++;
+			crab_class.counter[0] ++;
+			crab_class.death[0]++;
 			//Debug.Log ("Death");
 			//	Destroy(GameObject.FindGameObjectWithTag("Copepod"));
 		}
@@ -136,11 +155,11 @@ public class Spawner_basic : MonoBehaviour {
 			timer2 = 0;
 			GameObject new_inst = Instantiate(create_bogue, transform.position, transform.rotation) as GameObject;
 			
-			GameObject.Find("Bogue_Counter").GetComponent<Animal_parents>().alive.Add(new_inst);
+			bogue_class.alive.Add(new_inst);
 			
-			GameObject.Find("Bogue_Counter").GetComponent<Animal_parents>().pop ++;
-			GameObject.Find("Bogue_Counter").GetComponent<Animal_Section_Bogue>().counter[0] ++;
-			GameObject.Find("Bogue_Counter").GetComponent<Animal_Section_Bogue>().death[0]++;
+			bogue_class.pop ++;
+			bogue_class.counter[0] ++;
+			bogue_class.death[0]++;
 			//Debug.Log ("Death");
 			//	Destroy(GameObject.FindGameObjectWithTag("Copepod"));
 		}

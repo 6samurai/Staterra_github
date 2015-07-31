@@ -3,7 +3,7 @@ using System.Collections;
 using System;
 using System.Collections.Generic;
 
-public class Animal_parents: MonoBehaviour {
+public class Animal_parents {
 
 	//public class Animals 
 	//{
@@ -17,10 +17,11 @@ public class Animal_parents: MonoBehaviour {
 		public List <GameObject> alive = new List<GameObject>();
 	    public int death_limit;
 
-		public int [] counter = new int[11];
-		public int [] death = new int[23];
-
-
+		public List<int> counter = new List<int>();
+		public List<int>  death = new List<int>();
+		public List <GameObject> creatures = new List<GameObject>();
+	public GameObject creature_object;
+	
 //	public int [] food_chain = new int[8];
 		//public int [] death_ratio;
 		//This is the first constructor for the Fruit class
@@ -35,6 +36,20 @@ public class Animal_parents: MonoBehaviour {
 			feed_ratio = 0;
 			pop = 0;
 		death_limit = 0;
+		//alive.Add (null);
+
+		counter.Add (0);
+		death.Add (0);
+
+		//for (int i=0; i<15; i++) {
+
+		/*creatures.Add((Resources.Load("Copepod_object")) as GameObject);
+		creatures.Add((Resources.Load("SeaUrchin_object")) as GameObject);
+		creatures.Add((Resources.Load("Shrimp_object")) as GameObject);
+		creatures.Add((Resources.Load("Bogue_object")) as GameObject);
+		creatures.Add((Resources.Load("Crab_object"))as GameObject);
+		creatures.Add((Resources.Load("Jellyfish_object"))as GameObject);*/
+		//}
 		//	death_ratio[0] = 0;
 
 
@@ -56,28 +71,38 @@ public class Animal_parents: MonoBehaviour {
 
 		}
 
-	public void zeroDeath(int iter){
-		
-		for (int i =0; i <iter; i ++) {
-			
-			death [i] = 0;
-			
-		}
+	public void zeroDeath(){
+		death.Clear();
+	
 		
 	}
 
 
-	public void zeroCounter(int iter){
-		
-		for (int i =0; i <iter; i ++) {
+	public void zeroCounter(){
+		counter.Clear ();
+		/*for (int i =0; i <iter; i ++) {
 			
 			counter [i] = 0;
 			
-		}
+		}*/
 		
 	}
 
+	public int Death_Cycle(){
 
+		return 0;
+		
+	}
+	
+	public void Feed_Cycle(){
+		
+		
+	}
+	
+	public void Repro_Cycle(){
+		
+		
+	}
 	public void reduce_Death(int limit, int iter){
 		//Time.timeScale = 0;
 		Debug.Log ("limit " + limit);

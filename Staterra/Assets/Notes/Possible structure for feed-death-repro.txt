@@ -1,0 +1,13 @@
+//List <Copepod> allCopePods = new List<Copepod>();
+
+class CopePod()
+{
+
+
+void feed(ref List<Plankton> food1)
+{
+
+//return food1;
+}
+
+}

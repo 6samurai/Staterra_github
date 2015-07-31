@@ -588,7 +588,8 @@ public class Spawn_Kill_processv6 : MonoBehaviour {
 						Copepod_details.GetComponent<Animal_Section_Copepod> ().counter[0] = 0;
 						Copepod_details.GetComponent<Animal_Section_Copepod> ().counter[1] = 0;
 
-						Copepod_details.GetComponent<Animal_Section_Copepod> ().zeroDeath(Copepod_details.GetComponent<Animal_Section_Copepod> ().death_limit);
+						//Copepod_details.GetComponent<Animal_Section_Copepod> ().zeroDeath(Copepod_details.GetComponent<Animal_Section_Copepod> ().death_limit);
+						Copepod_details.GetComponent<Animal_Section_Copepod> ().zeroDeath();
 						creature.GetComponent<Animal_parents> ().pop = food;
 						
 						creature.GetComponent<Animal_Section_Shrimp> ().counter[0] = creature.GetComponent<Animal_parents> ().pop;
@@ -611,15 +612,20 @@ public class Spawn_Kill_processv6 : MonoBehaviour {
 							Destroy (Shrimp_details.GetComponent<Animal_parents> ().alive [lastindex]);
 							Shrimp_details.GetComponent<Animal_parents> ().alive.RemoveAt (lastindex);
 						}
-						creature.GetComponent<Animal_Section_Shrimp> ().zeroDeath(creature.GetComponent<Animal_Section_Shrimp> ().death_limit);
-						creature.GetComponent<Animal_Section_Shrimp> ().zeroCounter(creature.GetComponent<Animal_Section_Shrimp> ().repro_ratio);
+						//creature.GetComponent<Animal_Section_Shrimp> ().zeroDeath(creature.GetComponent<Animal_Section_Shrimp> ().death_limit);
+						creature.GetComponent<Animal_Section_Shrimp> ().zeroDeath();
+
+						//creature.GetComponent<Animal_Section_Shrimp> ().zeroCounter(creature.GetComponent<Animal_Section_Shrimp> ().repro_ratio);
+						creature.GetComponent<Animal_Section_Shrimp> ().zeroCounter();
+
 						creature.GetComponent<Animal_parents> ().pop = 0;
 
 						Copepod_details.GetComponent<Animal_parents> ().pop = 0;
 						Copepod_details.GetComponent<Animal_Section_Copepod> ().counter[0] = 0;
 						Copepod_details.GetComponent<Animal_Section_Copepod> ().counter[1] = 0;
-						Copepod_details.GetComponent<Animal_Section_Copepod> ().zeroDeath(Copepod_details.GetComponent<Animal_Section_Copepod> ().death_limit);
-				
+
+						//Copepod_details.GetComponent<Animal_Section_Copepod> ().zeroDeath(Copepod_details.GetComponent<Animal_Section_Copepod> ().death_limit);
+						Copepod_details.GetComponent<Animal_Section_Copepod> ().zeroDeath();
 					}
 					
 					}
