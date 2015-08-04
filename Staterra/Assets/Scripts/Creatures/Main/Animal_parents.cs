@@ -20,7 +20,7 @@ public class Animal_parents {
 		public List<int> counter = new List<int>();
 		public List<int>  death = new List<int>();
 		public List <GameObject> creatures = new List<GameObject>();
-	public GameObject creature_object;
+		public GameObject creature_object;
 	
 //	public int [] food_chain = new int[8];
 		//public int [] death_ratio;

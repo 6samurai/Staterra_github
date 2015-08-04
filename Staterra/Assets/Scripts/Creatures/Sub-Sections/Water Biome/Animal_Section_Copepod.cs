@@ -7,9 +7,9 @@ using System;
 
 public class Animal_Section_Copepod : Animal_parents {
 
-	public int count_stage1 = 0;
-	public int count_stage2 = 0;
-	public  Animal_Section_Fighterplankton plankton_class = new Animal_Section_Fighterplankton();
+	//public int count_stage1 = 0;
+//public int count_stage2 = 0;
+//	public  Animal_Section_Fighterplankton plankton_class = new Animal_Section_Fighterplankton();
 	//	public int []  counter = new int[2];
 //	public int [] death = new int[5];
 	//public GameObject[] alive;
@@ -27,8 +27,8 @@ public class Animal_Section_Copepod : Animal_parents {
 		base.feed_ratio = 1;
 		//base.pop = 0;
 		base.death_limit = 4;
-		base.counter.Add (0);
-		for (int i =0; i<4; i++)
+	//	base.counter.Add (0);
+		for (int i =0; i<3; i++)
 			base.death.Add (0);
 		//base.death_ratio = 5;
 		//count_pop = 0;
@@ -66,7 +66,9 @@ public class Animal_Section_Copepod : Animal_parents {
 
 	public void Death_Cycle(int blank){
 
+
 		int lastindex = 0;
+
 		for (int i =0; i< death[3]; i++) {
 			
 			lastindex = alive.Count - 1;
@@ -88,7 +90,7 @@ public class Animal_Section_Copepod : Animal_parents {
 				death[3] = death[3]-counter[i-1];
 
 				if(death[3] ==0){
-					counter[i-1] = death[4];
+					counter[i-1] = 0;
 					
 					break;
 					
@@ -101,29 +103,29 @@ public class Animal_Section_Copepod : Animal_parents {
 		}
 		
 		
-		shift_Values_death(4);
+		shift_Values_death(3);
 
 
 		Debug.Log ("pop after death " + pop);
 
 	}
 
-	public void Feeding_Cycle(int food){
+	public void Feeding_Cycle(ref Animal_Section_Fighterplankton food){
 
 		//int food = plankton_class.pop;
 		int pops = pop;
 		int lastindex = 0;
-		int food_counter = 0;
+		int food_counter = pops - food.pop;
 		int death_counter = 0;
-		if (pops <= food) {
+		if ( food.pop>=pops) {
 			//		Debug.Log ("pop less or equal food");
-			plankton_class.pop = food - pops;
-			
-		} else if (food < pops) {
+			food.pop = food.pop - pops;
+			//return
+		} else if (food.pop < pops) {
 			//	Debug.Log ("food less pop");
 			//	Debug.Log (pops - food);
 			
-			for (int i =0; i<	pops-food; i++) {
+			for (int i =0; i<	pops-food.pop; i++) {
 				
 				lastindex = alive.Count - 1;
 				GameObject.Destroy (alive [lastindex]);
@@ -131,16 +133,17 @@ public class Animal_Section_Copepod : Animal_parents {
 			}
 			
 			
-			pop = food;
-			plankton_class.pop = 0;
-			
+			pop = food.pop;
+			food.pop = 0;
+			//return (0);
+
 			//repro allocation after death
 			counter[0] = pop;
 			counter[1] = 0;
 			
 			
-			food_counter = pops - food;
-			for (int i =4; i>=0;i--){
+			//food_counter = pops - food;
+			for (int i =3; i>=0;i--){
 				
 		//		Debug.Log(" before food" + food_counter);
 		//		Debug.Log(" before death i " + death[i]);

@@ -64,9 +64,9 @@ public class Spawn_Kill_process10 : MonoBehaviour {
 	public int num1;
 	public int num2;
 	
-	int [] prev_count = new int[8]; // for reproduction
+//int [] prev_count = new int[8]; // for reproduction
 	
-	int[] death = new int[17];
+//	int[] death = new int[17];
 	
 	public int death_counter =0;
 	public  int food_counter = 0;
@@ -117,12 +117,12 @@ public class Spawn_Kill_process10 : MonoBehaviour {
 			
 		}
 		copepod_class.creature_object = (Copepod) as GameObject;
-		parents.creatures.Add (SeaUrchin);
-		parents.creatures.Add (Shrimp);
-		parents.creatures.Add (Crab);
-		parents.creatures.Add (Bogue);
+		seaurchin_class.creature_object = (SeaUrchin) as GameObject;
+		shrimp_class.creature_object = (Shrimp) as GameObject;
+		crab_class.creature_object = (Crab) as GameObject;
+		bogue_class.creature_object = (Bogue) as GameObject;
 		//parents.creatures.Add (Copepod);
-		parents.creatures.Add (Jellyfish);
+		jellyfish_class.creature_object = (Jellyfish) as GameObject;
 		/*parents.creatures.Add (Copepod);
 		parents.creatures.Add (Copepod);
 		parents.creatures.Add (Copepod);
@@ -351,7 +351,7 @@ public class Spawn_Kill_process10 : MonoBehaviour {
 		timer_limit = 2f;
 		
 	
-		plankton_class.pop = 100000000;
+		plankton_class.pop = 1000;
 	}
 
 	// Update is called once per frame
@@ -360,7 +360,12 @@ public class Spawn_Kill_process10 : MonoBehaviour {
 		Create_Creature ();
 		
 		timer = timer + Time.deltaTime;
-		DebugStreamer.AddMessage(count);
+
+		DebugStreamer.AddMessage(copepod_class.death[0]);
+		DebugStreamer.AddMessage(copepod_class.death[1]);
+		DebugStreamer.AddMessage(copepod_class.death[2]);
+
+		DebugStreamer.AddMessage(copepod_class.death[3]);
 		DebugStreamer.AddMessage(copepod_class.pop);
 		//if (timer >= Time.deltaTime + timer_limit) {
 		if (Input.GetKeyUp (KeyCode.Space)) {
@@ -394,6 +399,28 @@ public class Spawn_Kill_process10 : MonoBehaviour {
 
 				}
 
+				if (i == 1 && seaurchin_class.pop != 0) {
+					
+					Debug.Log("death");
+					Debug.Log("objects in array" + seaurchin_class.alive[0]);
+					
+					seaurchin_class.Death_Cycle (0);
+					
+					
+					
+				}
+
+				if (i == 2 && shrimp_class.pop != 0) {
+					
+					Debug.Log("death");
+					Debug.Log("objects in array" + shrimp_class.alive[0]);
+					
+					shrimp_class.Death_Cycle (0);
+					
+					
+					
+				}
+				
 			}
 
 			//Feeding---------------------------------------------------------------------------------------------------------------------------------
@@ -404,10 +431,26 @@ public class Spawn_Kill_process10 : MonoBehaviour {
 				//	if(creature.GetComponent<Animal_parents>().pop !=0){
 				if (i == 0 && copepod_class.pop != 0) {
 					Debug.Log("feed");
-					copepod_class.Feeding_Cycle(plankton_class.pop);
+					copepod_class.Feeding_Cycle(ref plankton_class);
 					
+					//DebugStreamer.AddMessage(plankton_class.pop);
+					//DebugStreamer.AddMessage(copepod_class.pop);
+				}
+
+				if (i == 1 && seaurchin_class.pop != 0) {
+					Debug.Log("feed");
+					seaurchin_class.Feeding_Cycle(ref plankton_class);
 					
+					//DebugStreamer.AddMessage(plankton_class.pop);
+					//DebugStreamer.AddMessage(copepod_class.pop);
+				}
+
+				if (i == 1 && shrimp_class.pop != 0) {
+					Debug.Log("feed");
+			//		shrimp_class.Feeding_Cycle(ref copepod_class.pop);
 					
+					//DebugStreamer.AddMessage(plankton_class.pop);
+					//DebugStreamer.AddMessage(copepod_class.pop);
 				}
 				
 			}
@@ -422,6 +465,14 @@ public class Spawn_Kill_process10 : MonoBehaviour {
 				if (i == 0 && copepod_class.pop != 0) {
 					Debug.Log("repro");
 					copepod_class.Repro_Cycle (pos,rotate);
+					
+					
+					
+				}
+
+				if (i == 1 && seaurchin_class.pop != 0) {
+					Debug.Log("repro");
+					seaurchin_class.Repro_Cycle (pos,rotate);
 					
 					
 					

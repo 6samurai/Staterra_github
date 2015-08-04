@@ -1,14 +1,14 @@
 ﻿<Properties>
-  <MonoDevelop.Ide.Workspace ActiveConfiguration="Debug" PreferredExecutionTarget="MonoDevelop.Default" />
-  <MonoDevelop.Ide.Workbench ActiveDocument="Assets\Scripts\Creatures\Main\Spawn_Kill_processv9.cs">
+  <MonoDevelop.Ide.Workspace ActiveConfiguration="Debug" />
+  <MonoDevelop.Ide.Workbench ActiveDocument="Assets\Scripts\Creatures\Sub-Sections\Water Biome\Animal_Section_Shrimp.cs">
     <Files>
-      <File FileName="Assets\Scripts\Creatures\Main\Animal_parents.cs" Line="85" Column="12" />
-      <File FileName="Assets\Scripts\Creatures\Sub-Sections\Water Biome\Animal_Section_Copepod.cs" Line="63" Column="35" />
+      <File FileName="Assets\Spawn_Kill_process10.cs" Line="69" Column="3" />
+      <File FileName="Assets\Scripts\Creatures\Main\Animal_parents.cs" Line="23" Column="37" />
       <File FileName="Assets\Scripts\Other\Spawner_basic.cs" Line="47" Column="1" />
-      <File FileName="Assets\Scripts\Creatures\Sub-Sections\Water Biome\Animal_Section_SeaUrchin.cs" Line="66" Column="23" />
-      <File FileName="Assets\Spawn_Kill_process10.cs" Line="134" Column="1" />
-      <File FileName="Assets\Scripts\Creatures\Main\DebugStreamer.cs" Line="7" Column="24" />
-      <File FileName="Assets\Scripts\Creatures\Main\Spawn_Kill_processv9.cs" Line="127" Column="25" />
+      <File FileName="Assets\Scripts\Creatures\Sub-Sections\Water Biome\Animal_Section_Copepod.cs" Line="113" Column="62" />
+      <File FileName="Assets\Scripts\Creatures\Sub-Sections\Water Biome\Animal_Section_Shrimp.cs" Line="98" Column="48" />
+      <File FileName="Assets\Scripts\Creatures\Sub-Sections\Water Biome\Animal_Section_SeaUrchin.cs" Line="75" Column="21" />
+      <File FileName="Assets\Scripts\Creatures\Main\Spawn_Kill_processv9.cs" Line="993" Column="7" />
     </Files>
   </MonoDevelop.Ide.Workbench>
   <MonoDevelop.Ide.DebuggingService.Breakpoints>
