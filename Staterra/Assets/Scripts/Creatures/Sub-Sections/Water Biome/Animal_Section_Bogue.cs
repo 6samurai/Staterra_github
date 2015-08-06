@@ -21,30 +21,88 @@ public class Animal_Section_Bogue : Animal_parents {
 		base.death_limit = 7;
 	//	count_pop = 0;
 	}
-
-	public int Feed_items(){
-		
-		//int feed = 0;
-		
-		GameObject copepod =  GameObject.Find ("Copepod_Counter");
-		GameObject	shrimp = GameObject.Find ("Shrimp_Counter");
-		
-		food_chain [0] = copepod.GetComponent<Animal_Section_Copepod>().pop;
-		food_chain [1] = shrimp.GetComponent<Animal_Section_Shrimp>().pop;
 	
+	public void Death_Cycle(int blank){
+		
+		
+		int lastindex = 0;
+		
+		for (int i =0; i< death[6]; i++) {
 			
-		if (food_chain [0] + food_chain [1]  == 0)
-			return 7; // this value represents the case where there is no populations that can be eaten
+			lastindex = alive.Count - 1;
+			if(lastindex>0){
+				GameObject.Destroy (alive [lastindex]);
+				alive.RemoveAt (lastindex);
+			}else if (lastindex ==0){
+				
+				//lastindex = alive.Count - 1;
+				GameObject.Destroy (alive [lastindex]);
+				alive[lastindex] = null;
+			}
+		}
 		
-		else if (pop <= food_chain [0])
-			return 0;
-		else if (pop <= food_chain [0] + food_chain [1])
-			return 1;
-		else if (pop > food_chain [0] + food_chain [1]  && food_chain [0] + food_chain [1]  != 0)
-			return 2;
+		pop = pop  - death[6];
 		
 		
-		return 10;
+		for (int i =0; i<3; i++) {
+			if (i == 0 && counter [0] >= death [6]) {
+				counter [i] = counter [i] - death [6];
+				break;
+			} else if (i != 0) {
+				
+				death [6] = death [6] - counter [i - 1];
+				
+				if (death [6] == 0) {
+					counter [i - 1] = 0;
+					
+					break;
+					
+					
+				} else if (death [6] > 0) {
+					counter [i - 1] = 0;
+					
+				} else if (death [6] < 0) {
+					counter [i - 1] = death [6] * -1;
+					death [6] = 0;
+				}
+			}
+		}
+		
+		
+		shift_Values_death(6);
+		
+		
+		Debug.Log ("pop after death " + pop);
+		
+	}
+
+
+
+	public void Repro_Cycle(Vector3 pos, Vector3 rot){
+		
+		int [] prev_count = new int[3];
+		
+		//	Debug.Log ("before for");
+		for (int i =0; i<counter[2]; i++) {
+			//	Debug.Log ("counter val " + counter[0]);
+			//	Debug.Log ("in if");
+			GameObject new_creat = GameObject.Instantiate (creature_object, pos, Quaternion.Euler( rot))as GameObject;
+			alive.Add (new_creat);
+			
+		}
+		
+		death[0] = death[0] + counter[2];
+		pop = pop +	counter[2];
+		
+		prev_count[0] = counter[0];
+		prev_count [1] = counter [1];
+		prev_count [2] = counter [2];
+		
+		counter[0] = prev_count[2] * 2;
+		counter [1] = prev_count [0];
+		counter [2] = prev_count [1];
+		//	death[0] = prev_count[1];
+		Debug.Log ("pop after repro " + pop);
 	}
 
 }

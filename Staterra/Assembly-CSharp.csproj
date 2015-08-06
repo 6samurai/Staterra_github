@@ -50,6 +50,8 @@
      <Compile Include="Assets\Scripts\Creatures\Main\Animal_parents.cs" />
      <Compile Include="Assets\Scripts\Creatures\Main\DebugStreamer.cs" />
      <Compile Include="Assets\Scripts\Creatures\Main\Spawn_Kill_process.cs" />
+     <Compile Include="Assets\Scripts\Creatures\Main\Spawn_Kill_process10.cs" />
+     <Compile Include="Assets\Scripts\Creatures\Main\Spawn_Kill_process11.cs" />
      <Compile Include="Assets\Scripts\Creatures\Main\Spawn_Kill_processv2.cs" />
      <Compile Include="Assets\Scripts\Creatures\Main\Spawn_Kill_processv3.cs" />
      <Compile Include="Assets\Scripts\Creatures\Main\Spawn_Kill_processv4.cs" />
@@ -88,7 +90,6 @@
      <Compile Include="Assets\Scripts\World actions\Rotate world\Rotate_Object_basic.cs" />
      <Compile Include="Assets\Scripts\World actions\Rotate world\Rotate_Objectv2.cs" />
      <Compile Include="Assets\Scripts\World actions\Rotate world\Rotate_Objectv3.cs" />
-     <Compile Include="Assets\Spawn_Kill_process10.cs" />
      <None Include="Assets\Notes\Possible structure for feed-death-repro.txt" />
  <Reference Include="UnityEngine.UI">
  <HintPath>C:/Program Files/Unity/Editor/Data/UnityExtensions/Unity/GUISystem/UnityEngine.UI.dll</HintPath>

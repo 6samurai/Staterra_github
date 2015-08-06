@@ -4,11 +4,6 @@ using System;
 
 
 public class Animal_Section_Shrimp : Animal_parents {
-	
-
-
-	
-	//public int count_pop = 0;
 
 	public Animal_Section_Shrimp(){
 
@@ -24,7 +19,7 @@ public class Animal_Section_Shrimp : Animal_parents {
 		for (int i =0; i<4; i++)
 			base.death.Add (0);
 
-	//	count_pop = 0;
+
 	}
 
 	public void Death_Cycle(int blank){
@@ -42,7 +37,7 @@ public class Animal_Section_Shrimp : Animal_parents {
 		pop = pop  - death[4];
 		
 		
-		for (int i =0; i<3;i++){
+		for (int i =0; i<=2;i++){
 			if(i==0 && counter[0]>=death[4]){
 				counter[i] = counter[i] - death[4];
 				break;
@@ -59,6 +54,10 @@ public class Animal_Section_Shrimp : Animal_parents {
 				}else if(death[4] >0){
 					counter[i-1] =0;
 					
+				} else if (death[4] <0){
+					counter[i-1] = death[4] *-1;
+					death[4] = 0;
+					break;
 				}
 			}
 		}
@@ -76,24 +75,28 @@ public class Animal_Section_Shrimp : Animal_parents {
 		
 		int pops = pop;
 		int lastindex = 0;
-		int food_counter =   pops;
-		int death_counter = 0;
-		if (food.pop >= pops ) {
+		int food_counter = 0 ;
 
+		if (food.pop >= pops ) {
+			 food_counter = food.pop-  pops ;
 			//normal eating (no loss from creature)
-			for (int i =0; i<pops; i++) {
-				
+			for (int i =0; i<=pops; i++) {
+
 				lastindex = food.alive.Count - 1;
-				if(lastindex>=0){
+				if(lastindex>0){
 					GameObject.Destroy (food.alive [lastindex]);
 					food.alive.RemoveAt (lastindex);
+				}else if (lastindex ==0){
+				
+					GameObject.Destroy (food.alive [lastindex]);
+					food.alive[lastindex] = null;
 				}
 			}
 
 			food.pop = food.pop - pops;
 			food.counter[0] = food.counter[0] - pops;
 
-			for (int i =4; i>=0;i--){
+			for (int i =3; i>=0;i--){
 
 				food_counter = food_counter - food.death[i] ;
 				
@@ -104,10 +107,8 @@ public class Animal_Section_Shrimp : Animal_parents {
 				} else	if(food_counter <0){
 					food.death[i] = food_counter *-1;
 					break;
-				}
-				
-				if(food.death[i] <0){
-					food.death[i] =	food.death[i] *-1;
+				}else if(food_counter >0){
+					food.death[i] =	0;
 				}
 				
 			}
@@ -118,7 +119,7 @@ public class Animal_Section_Shrimp : Animal_parents {
 			
 		//	copepod_class.pop = food.pop - pops;
 			
-			for (int i =0; i<pops-food.pop; i++) {
+			for (int i =0; i<=pops-food.pop; i++) {
 				
 				
 				if(alive.Count >0){
@@ -126,33 +127,48 @@ public class Animal_Section_Shrimp : Animal_parents {
 					if(lastindex>=0){
 						GameObject.Destroy (alive [lastindex]);
 						alive.RemoveAt (lastindex);
+					}else if (lastindex ==0){
+					
+						GameObject.Destroy (alive [lastindex]);
+						alive[lastindex] = null;
 					}
 				}
 				
 				
-				if(food.alive.Count >0){
-					GameObject.Destroy (food.alive [0]);
-					food.alive.RemoveAt (0);
+			//	if(food.alive.Count >0){
+				//	GameObject.Destroy (food.alive [0]);
+				//	food.alive.RemoveAt (0);
 					
-				}
+			//	}
 				
+			}
+
+			while (food.alive.Count >0){
+				if(food.alive.Count>1){
+				GameObject.Destroy (food.alive [0]);
+				food.alive.RemoveAt (0);
+				}else if (food.alive.Count==1){
+					GameObject.Destroy (alive [lastindex]);
+					alive[lastindex] = null;
+				}
+
 			}
 			pop = food.pop;
 			counter[0] = pop;
 			counter[1] = 0;
-			counter[2] = 0;
+
 			
 			
 			Debug.Log("pops " + pops);
 			Debug.Log("food "+food);
 			reduce_Death(pops-food.pop,death_limit );
-			reduce_Count(pops-food.pop,death_limit );
+			reduce_Count(pops-food.pop,repro_ratio );
 
 			food.pop = 0;
-			food.counter[0] = 0;
+			food.zeroCounter();
 
 			food.zeroDeath();
-			food_counter = food.pop - pops;
+			//food_counter = food.pop - pops;
 
 
 		/*	for(int i =0; i <=2; i++){
@@ -175,8 +191,15 @@ public class Animal_Section_Shrimp : Animal_parents {
 			for (int i =0; i<pops; i++) {
 				
 				lastindex = alive.Count - 1;
-				GameObject.Destroy (alive [lastindex]);
-				alive.RemoveAt (lastindex);
+				if(lastindex>0){
+					GameObject.Destroy (alive [lastindex]);
+					alive.RemoveAt (lastindex);
+				}else if (lastindex ==0){
+					
+					//lastindex = alive.Count - 1;
+					GameObject.Destroy (alive [lastindex]);
+					alive[lastindex] = null;
+				}
 			}
 
 			zeroDeath();
@@ -185,6 +208,34 @@ public class Animal_Section_Shrimp : Animal_parents {
 		}
 
 		Debug.Log ("pop after eating " + pop);
+	}
+
+	
+	public void Repro_Cycle(Vector3 pos, Vector3 rot){
+		
+		int [] prev_count = new int[2];
+
+		//	Debug.Log ("before for");
+		for (int i =0; i<counter[1]; i++) {
+			//	Debug.Log ("counter val " + counter[0]);
+			//	Debug.Log ("in if");
+			GameObject new_creat = GameObject.Instantiate (creature_object, pos, Quaternion.Euler( rot))as GameObject;
+			alive.Add (new_creat);
+			
+		}
+
+		death[0] = death[0] + counter[1];
+		pop = pop +	counter[1];
+		
+		prev_count[0] = counter[0];
+		prev_count [1] = counter [1];
+	
+		
+		counter[0] = prev_count[1] * 2;
+		counter [1] = prev_count [0];
+
+	//	death[0] = prev_count[1];
+		Debug.Log ("pop after repro " + pop);
 	}
 
 }

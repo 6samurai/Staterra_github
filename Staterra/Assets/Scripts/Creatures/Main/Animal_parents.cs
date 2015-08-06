@@ -36,7 +36,7 @@ public class Animal_parents {
 			feed_ratio = 0;
 			pop = 0;
 		death_limit = 0;
-		//alive.Add (null);
+	//	alive.Add (null);
 
 		counter.Add (0);
 		death.Add (0);
@@ -71,21 +71,25 @@ public class Animal_parents {
 
 		}
 
+
 	public void zeroDeath(){
-		death.Clear();
+		Debug.Log ("death.Count" + death.Count);
+		for (int i =0; i <death.Count; i ++) {
+			
+			death[i] = 0;
+		}
 	
 		
 	}
 
 
 	public void zeroCounter(){
-		counter.Clear ();
-		/*for (int i =0; i <iter; i ++) {
+		Debug.Log ("counter.Count" + counter.Count);
+		for (int i =0; i <counter.Count; i ++) {
 			
-			counter [i] = 0;
-			
-		}*/
-		
+			counter[i] = 0;
+		}
+
 	}
 
 	public int Death_Cycle(){
@@ -108,11 +112,22 @@ public class Animal_parents {
 		Debug.Log ("limit " + limit);
 		int temp = 0;
 		
-		for (int i = 0; i<iter; i++) {
+		for (int i = iter; i>=0; i++) {
+
 			temp = death[i];
-			if(death[i] >= limit){
-				death[i] = death [i] - limit;
+
+			death[i] = death [i] - limit;
+
+			if(limit > 0){
+
 				limit = limit - temp; 
+			} 
+
+			if (limit <0){
+				death[i] = death[i] + limit*-1;
+				limit =0;
+
+
 			}
 			
 			if(death[i]<0){
@@ -138,9 +153,16 @@ public class Animal_parents {
 		
 		for (int i = 0; i<iter; i++) {
 			temp = counter[i];
-			if(counter[i] >= limit){
-				counter[i] = counter [i] - limit;
+
+			counter[i] = counter [i] - limit;
+			if(limit >0){
+			
 				limit = limit - temp; 
+			}
+
+			if(limit <0){
+				counter[i] = counter[i] + limit*-1;
+				limit = 0;
 			}
 			
 			if(death[i]<0){

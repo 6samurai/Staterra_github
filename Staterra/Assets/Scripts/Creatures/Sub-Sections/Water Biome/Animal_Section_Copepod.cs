@@ -36,33 +36,7 @@ public class Animal_Section_Copepod : Animal_parents {
 
 	}
 
-	/*void Update(){
 
-	 alive  = GameObject.FindGameObjectsWithTag("Copepod");
-
-
-	}*/
-
-/*	public void zeroDeath(){
-
-		for (int i =0; i <5; i ++) {
-
-			death [i] = 0;
-
-		}
-
-	}
-
-
-	public void zeroCounter(){
-		
-		for (int i =0; i <2; i ++) {
-			
-			counter [i] = 0;
-			
-		}
-		
-	}*/
 
 	public void Death_Cycle(int blank){
 
@@ -72,8 +46,16 @@ public class Animal_Section_Copepod : Animal_parents {
 		for (int i =0; i< death[3]; i++) {
 			
 			lastindex = alive.Count - 1;
+			if(lastindex>0){
 			GameObject.Destroy (alive [lastindex]);
 			alive.RemoveAt (lastindex);
+
+			}else if (lastindex ==0){
+				
+				//lastindex = alive.Count - 1;
+				GameObject.Destroy (alive [lastindex]);
+				alive[lastindex] = null;
+			}
 		}
 
 		pop = pop  - death[3];
@@ -81,7 +63,7 @@ public class Animal_Section_Copepod : Animal_parents {
 		//death[4] = death[3];
 		
 		//counter modify
-		for (int i =0; i<2;i++){
+		for (int i =0; i<1;i++){
 			if(i==0 && counter[0]>=death[3]){
 				counter[i] = counter[i] - death[3];
 				break;
@@ -106,7 +88,7 @@ public class Animal_Section_Copepod : Animal_parents {
 		shift_Values_death(3);
 
 
-		Debug.Log ("pop after death " + pop);
+		//Debug.Log ("pop after death " + pop);
 
 	}
 
@@ -116,22 +98,32 @@ public class Animal_Section_Copepod : Animal_parents {
 		int pops = pop;
 		int lastindex = 0;
 		int food_counter = pops - food.pop;
-		int death_counter = 0;
+
 		if ( food.pop>=pops) {
-			//		Debug.Log ("pop less or equal food");
+		//		Debug.Log ("pop less or equal food");
 			food.pop = food.pop - pops;
 			//return
 		} else if (food.pop < pops) {
-			//	Debug.Log ("food less pop");
-			//	Debug.Log (pops - food);
-			
-			for (int i =0; i<	pops-food.pop; i++) {
-				
+			Debug.Log ("pop" + pops );
+			Debug.Log ("food " + food.pop);
+			Debug.Log ("food less pop" + (pops - food.pop));
+			Debug.Log ("index counter" + (alive.Count - 1));			
+			for (int i =0; i<=	pops-food.pop; i++) {
 				lastindex = alive.Count - 1;
-				GameObject.Destroy (alive [lastindex]);
-				alive.RemoveAt (lastindex);
+
+				if(lastindex >0){
+
+					GameObject.Destroy (alive [lastindex]);
+					alive.RemoveAt (lastindex);
+				
+				}else if (lastindex ==0){
+
+					//lastindex = alive.Count - 1;
+					GameObject.Destroy (alive [lastindex]);
+					alive[lastindex] = null;
+				}
 			}
-			
+			Debug.Log(" AFTER DESTORY");
 			
 			pop = food.pop;
 			food.pop = 0;
@@ -139,19 +131,19 @@ public class Animal_Section_Copepod : Animal_parents {
 
 			//repro allocation after death
 			counter[0] = pop;
-			counter[1] = 0;
+
 			
-			
+			Debug.Log(" BEFORE COUNT");
 			//food_counter = pops - food;
 			for (int i =3; i>=0;i--){
 				
-		//		Debug.Log(" before food" + food_counter);
-		//		Debug.Log(" before death i " + death[i]);
-				death_counter = death[i];
+			//	Debug.Log(" before food" + food_counter);
+			//	Debug.Log(" before death i " + death[i]);
+			
 				
 				
-				food_counter = food_counter - death_counter ;
-				
+				food_counter = food_counter - death[i] ;
+
 		//		Debug.Log("  food counter" + food_counter);
 				if(food_counter ==0){
 					
@@ -170,8 +162,8 @@ public class Animal_Section_Copepod : Animal_parents {
 					
 					death[i] =	death[i] *-1;
 				}
-		//		Debug.Log("last death i " + death[i]);
-		//		Debug.Log("last before food" + food);
+			//	Debug.Log("last death i " + death[i]);
+			//	Debug.Log("last before food" + food);
 				
 			}
 			
@@ -179,6 +171,14 @@ public class Animal_Section_Copepod : Animal_parents {
 
 		
 		Debug.Log ("pop after eating " + pop);
+
+		if (pop == 0) {
+
+
+			zeroDeath();
+			zeroCounter();
+
+		}
 	}
 
 	public void Repro_Cycle(Vector3 pos, Vector3 rot){

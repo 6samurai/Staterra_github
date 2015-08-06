@@ -30,16 +30,19 @@ public class Animal_Section_SeaUrchin : Animal_parents {
 		for (int i =0; i< death[2]; i++) {
 			
 			lastindex = alive.Count - 1;
-			GameObject.Destroy (alive [lastindex]);
-			alive.RemoveAt (lastindex);
+			if(lastindex>0){
+				GameObject.Destroy (alive [lastindex]);
+				alive.RemoveAt (lastindex);
+			}else if (lastindex ==0){
+				
+				//lastindex = alive.Count - 1;
+				GameObject.Destroy (alive [lastindex]);
+				alive[lastindex] = null;
+			}
 		}
 		pop = pop  - death[2];
-		
-		
 
-		
-		//counter modify
-		for (int i =0; i<=1;i++){
+		for (int i =0; i<1;i++){
 			if(i==0 && counter[0]>=death[2]){
 				counter[i] = counter[i] - death[2];
 				break;
@@ -74,18 +77,27 @@ public class Animal_Section_SeaUrchin : Animal_parents {
 		int pops = pop;
 		int lastindex = 0;
 		int food_counter = pops - food.pop;
-		int death_counter = 0;
+	
 		if ( food.pop >= pops) {
 			
 			food.pop = food.pop - pops;
 			
 		} else if (food.pop < pops) {
 			
-			for (int i =0; i<	pops-food.pop; i++) {
-				
+			for (int i =0; i<=	pops-food.pop; i++) {
 				lastindex = alive.Count - 1;
-				GameObject.Destroy (alive [lastindex]);
-				alive.RemoveAt (lastindex);
+
+				if(lastindex >0){
+
+					GameObject.Destroy (alive [lastindex]);
+					alive.RemoveAt (lastindex);
+
+				}else if (lastindex ==0){
+					
+					//lastindex = alive.Count - 1;
+					GameObject.Destroy (alive [lastindex]);
+					alive[lastindex] = null;
+				}
 			}
 			
 			
@@ -93,17 +105,10 @@ public class Animal_Section_SeaUrchin : Animal_parents {
 			food.pop = 0;
 			
 			counter[0] = pop;
-			counter[1] = 0;
-			
-			
-			
+
 			for (int i =2; i>=0;i--){
-				
-				
-				death_counter = death[i];
-				
-				
-				food_counter = food_counter - death_counter ;
+
+				food_counter = food_counter - death[i];
 				
 				
 				if(food_counter ==0){
@@ -129,7 +134,13 @@ public class Animal_Section_SeaUrchin : Animal_parents {
 			
 		}
 		
-		
+		if (pop == 0) {
+			
+			
+			zeroDeath();
+			zeroCounter();
+			
+		}
 		Debug.Log ("pop after eating " + pop);
 	}
 
