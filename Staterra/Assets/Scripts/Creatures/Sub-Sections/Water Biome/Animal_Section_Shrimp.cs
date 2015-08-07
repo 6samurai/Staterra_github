@@ -66,21 +66,22 @@ public class Animal_Section_Shrimp : Animal_parents {
 		shift_Values_death(4);
 		
 		
-		Debug.Log ("pop after death " + pop);
+		Debug.Log ("shrimp[ pop after death " + pop);
 		
 	}
 
 	public void Feeding_Cycle(ref Animal_Section_Copepod food){
-		
-		
+		Debug.Log ("eatne food pop" + food.pop);
+		Debug.Log ("feeder food pop" + pop);
 		int pops = pop;
 		int lastindex = 0;
-		int food_counter = 0 ;
+	//	int food_counter = 0 ;
 
 		if (food.pop >= pops ) {
-			 food_counter = food.pop-  pops ;
+			Debug.Log("in eqaul loop");
+		//	 food_counter = food.pop-  pops ;
 			//normal eating (no loss from creature)
-			for (int i =0; i<=pops; i++) {
+			for (int i =0; i<pops; i++) {
 
 				lastindex = food.alive.Count - 1;
 				if(lastindex>0){
@@ -93,10 +94,11 @@ public class Animal_Section_Shrimp : Animal_parents {
 				}
 			}
 
+			food.reduce_Death (food.pop - pop,food.death_limit);
 			food.pop = food.pop - pops;
 			food.counter[0] = food.counter[0] - pops;
 
-			for (int i =3; i>=0;i--){
+		/*	for (int i =3; i>=0;i--){
 
 				food_counter = food_counter - food.death[i] ;
 				
@@ -111,10 +113,10 @@ public class Animal_Section_Shrimp : Animal_parents {
 					food.death[i] =	0;
 				}
 				
-			}
+			}*/
 
 			
-		} if ( food.pop < pops && food.pop >0) {
+		} else if ( food.pop < pops && food.pop >0) {
 			Debug.Log("feed with few sources");
 			
 		//	copepod_class.pop = food.pop - pops;
@@ -142,17 +144,20 @@ public class Animal_Section_Shrimp : Animal_parents {
 			//	}
 				
 			}
-
-			while (food.alive.Count >0){
-				if(food.alive.Count>1){
-				GameObject.Destroy (food.alive [0]);
-				food.alive.RemoveAt (0);
+			Debug.Log("before while");
+			while (food.alive.Count >=1){
+				if(food.alive.Count>2){
+					GameObject.Destroy (food.alive [0]);
+					food.alive.RemoveAt (0);
 				}else if (food.alive.Count==1){
-					GameObject.Destroy (alive [lastindex]);
-					alive[lastindex] = null;
+					Debug.Log("last case");
+					Debug.Log("at last pointer " + food.alive[0]);
+					GameObject.Destroy (food.alive [0]);
+					food.alive[0] = null;
 				}
 
 			}
+			Debug.Log("after while");
 			pop = food.pop;
 			counter[0] = pop;
 			counter[1] = 0;

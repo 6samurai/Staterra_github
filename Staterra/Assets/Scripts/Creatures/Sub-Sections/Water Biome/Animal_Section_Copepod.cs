@@ -40,6 +40,7 @@ public class Animal_Section_Copepod : Animal_parents {
 
 	public void Death_Cycle(int blank){
 
+		Debug.Log (" cope pop before death " + pop);
 
 		int lastindex = 0;
 
@@ -88,7 +89,7 @@ public class Animal_Section_Copepod : Animal_parents {
 		shift_Values_death(3);
 
 
-		//Debug.Log ("pop after death " + pop);
+		Debug.Log (" cope pop after death " + pop);
 
 	}
 
@@ -171,7 +172,7 @@ public class Animal_Section_Copepod : Animal_parents {
 
 		
 		Debug.Log ("pop after eating " + pop);
-
+		Debug.Log ("pop after eating " + alive);
 		if (pop == 0) {
 
 

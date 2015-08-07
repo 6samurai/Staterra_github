@@ -113,7 +113,7 @@ public class Spawn_Kill_process11 : MonoBehaviour {
 	void Awake(){
 		for (int i =0; i <tier_stage.Length; i++) {
 			
-			tier_stage[i] = true;
+			tier_stage[i] = false;
 			
 		}
 		copepod_class.creature_object = (Copepod) as GameObject;
@@ -186,12 +186,13 @@ public class Spawn_Kill_process11 : MonoBehaviour {
 				active = true;
 				tier_stage[0] = true;
 			}
-			
+
 			
 			//tier.set_Active();
 			timer2 = 0;
 			
 			Debug.Log("in spawner" + tiers[0,0]+ " tier 1,0" + tiers[0,1]);
+			Debug.Log("active" + active);
 			GameObject new_inst = Instantiate(Shrimp, transform.position, transform.rotation) as GameObject;
 			
 			shrimp_class.alive.Add(new_inst);
@@ -201,7 +202,7 @@ public class Spawn_Kill_process11 : MonoBehaviour {
 			shrimp_class.death[0]++;
 	
 		}
-		if(Input.GetKeyUp(KeyCode.F4)){// && timer>= Time.deltaTime + timer_limit){
+		if(Input.GetKeyUp(KeyCode.F6)){// && timer>= Time.deltaTime + timer_limit){
 			if(tier_stage[1] ==false){
 				tiers[1,0] = true;
 				tiers[1,1] = false;
@@ -220,7 +221,7 @@ public class Spawn_Kill_process11 : MonoBehaviour {
 		}
 		
 		
-		if(Input.GetKeyUp(KeyCode.F5)){// && timer>= Time.deltaTime + timer_limit){
+		if(Input.GetKeyUp(KeyCode.F4)){// && timer>= Time.deltaTime + timer_limit){
 			if(tier_stage[0] ==false){
 				tiers[0,0] = true;
 				tiers[0,1] = false;
@@ -237,7 +238,7 @@ public class Spawn_Kill_process11 : MonoBehaviour {
 			crab_class.death[0]++;
 
 		}
-		if(Input.GetKeyUp(KeyCode.F6)){// && timer>= Time.deltaTime + timer_limit){
+		if(Input.GetKeyUp(KeyCode.F5)){// && timer>= Time.deltaTime + timer_limit){
 			
 			if(tier_stage[0] ==false){
 				tiers[0,0] = true;
@@ -284,7 +285,7 @@ public class Spawn_Kill_process11 : MonoBehaviour {
 						copepod_class.alive.Add (new_creat);
 						
 					}
-					temp_double_pop[0] += copepod_class.pop;
+					temp_double_pop[0] =  temp_double_pop[0] +copepod_class.pop;
 					
 				}
 				
@@ -295,7 +296,7 @@ public class Spawn_Kill_process11 : MonoBehaviour {
 						
 					}
 					
-					temp_double_pop[1] += copepod_class.pop;
+					temp_double_pop[1] =temp_double_pop[1] + seaurchin_class.pop;
 					
 				}
 			}
@@ -313,7 +314,7 @@ public class Spawn_Kill_process11 : MonoBehaviour {
 						crab_class.alive.Add (new_creat);
 						
 					}
-					temp_double_pop[3] += crab_class.pop;
+					temp_double_pop[3] = temp_double_pop[3] +crab_class.pop;
 					
 				}
 				if(shrimp_class.pop!=0){
@@ -322,7 +323,7 @@ public class Spawn_Kill_process11 : MonoBehaviour {
 						shrimp_class.alive.Add (new_creat);
 						
 					}
-					temp_double_pop[2] += shrimp_class.pop;
+					temp_double_pop[2] = temp_double_pop[2] + shrimp_class.pop;
 					
 				}
 				
@@ -333,7 +334,7 @@ public class Spawn_Kill_process11 : MonoBehaviour {
 						
 					}
 					
-					temp_double_pop[4] += bogue_class.pop;
+					temp_double_pop[4] = temp_double_pop[4] + bogue_class.pop;
 					
 				}
 				
@@ -362,11 +363,10 @@ public class Spawn_Kill_process11 : MonoBehaviour {
 		
 		timer = timer + Time.deltaTime;
 
-		DebugStreamer.AddMessage(copepod_class.counter[0]);
 		DebugStreamer.AddMessage(copepod_class.pop);
-		DebugStreamer.AddMessage(plankton_class.pop);
-
-		DebugStreamer.AddMessage(copepod_class.death[3]);
+		DebugStreamer.AddMessage(seaurchin_class.pop);
+		DebugStreamer.AddMessage(shrimp_class.pop);
+		DebugStreamer.AddMessage(crab_class.pop);
 		DebugStreamer.AddMessage(count);
 		//if (timer >= Time.deltaTime + timer_limit) {
 		if (Input.GetKeyUp (KeyCode.Space)) {
@@ -393,13 +393,13 @@ public class Spawn_Kill_process11 : MonoBehaviour {
 
 					Debug.Log("death");
 					Debug.Log("objects in array " + copepod_class.alive[0]);
-
+			//	Debug.Log("objects in array " + copepod_class.alive[1]);
 					copepod_class.Death_Cycle (0);
 
 
 
 				}
-
+  
 				if (seaurchin_class.pop != 0) {
 					
 					Debug.Log("death");
@@ -432,9 +432,20 @@ public class Spawn_Kill_process11 : MonoBehaviour {
 					
 				}
 
-				
-		//	}
 
+				if ( bogue_class.pop != 0) {
+					
+					Debug.Log("death");
+					Debug.Log("objects in array " + bogue_class.alive[0]);
+					
+					bogue_class.Death_Cycle (0);
+					
+					
+					
+				}
+			
+			//	}
+			
 			//Feeding---------------------------------------------------------------------------------------------------------------------------------
 		//	for (int i =0; i <15; i++) {
 				//	Debug.Log ("after check");
@@ -442,7 +453,7 @@ public class Spawn_Kill_process11 : MonoBehaviour {
 				//copepod =========================================================================
 				//	if(creature.GetComponent<Animal_parents>().pop !=0){
 				if (copepod_class.pop != 0) {
-					Debug.Log("feed");
+					Debug.Log("feed copepod");
 
 				copepod_class.Feeding_Cycle(ref plankton_class);
 
@@ -465,7 +476,7 @@ public class Spawn_Kill_process11 : MonoBehaviour {
 				}
 
 				if (shrimp_class.pop != 0) {
-					Debug.Log("feed");
+					Debug.Log("feed shrimp");
 
 				shrimp_class.Feeding_Cycle(ref copepod_class);
 				}
@@ -475,6 +486,12 @@ public class Spawn_Kill_process11 : MonoBehaviour {
 
 				crab_class.Feeding_Cycle(ref seaurchin_class);
 				}
+
+			if ( bogue_class.pop != 0) {
+				Debug.Log("feed");
+				
+				bogue_class.Feeding_Cycle(ref copepod_class,ref shrimp_class);
+			}
 				
 		//	}
 
@@ -516,8 +533,14 @@ public class Spawn_Kill_process11 : MonoBehaviour {
 					
 					
 				}
+			if ( bogue_class.pop != 0) {
+				Debug.Log("repro");
+				bogue_class.Repro_Cycle (pos,rotate);
 				
 				
+				
+			}
+			
 			
 
 			//------------------------UPDATES OF DOUBLING -------------------------
@@ -528,13 +551,13 @@ public class Spawn_Kill_process11 : MonoBehaviour {
 				tiers [0, 0] = false;
 				
 				Debug.Log("in second part, area 1");
-				copepod_class.death [0] += temp_double_pop[0];
-				copepod_class.counter [0] += temp_double_pop[0];
-				copepod_class.pop +=temp_double_pop[0];
+				copepod_class.death [0] = copepod_class.death [0] + temp_double_pop[0];
+				copepod_class.counter [0] = copepod_class.counter [0]  + temp_double_pop[0];
+				copepod_class.pop =	copepod_class.pop + temp_double_pop[0];
 				
-				seaurchin_class.death [0] += temp_double_pop[1];
-				seaurchin_class.counter [0] += temp_double_pop[1];
-				seaurchin_class.pop +=temp_double_pop[1];
+				seaurchin_class.death [0] = seaurchin_class.death [0] + temp_double_pop[1];
+				seaurchin_class.counter [0] = seaurchin_class.counter [0] + temp_double_pop[1];
+				seaurchin_class.pop =seaurchin_class.pop +temp_double_pop[1];
 				
 				
 				
@@ -544,26 +567,26 @@ public class Spawn_Kill_process11 : MonoBehaviour {
 				tiers [1, 1] = false;
 				tiers [1, 0] = false;
 				Debug.Log("in second part, area 2");
-				copepod_class.death [0] += temp_double_pop[0];
-				copepod_class.counter [0] += temp_double_pop[0];
-				copepod_class.pop +=temp_double_pop[0];
+				copepod_class.death [0] =copepod_class.death [0] +  temp_double_pop[0];
+				copepod_class.counter [0] =copepod_class.counter [0] + temp_double_pop[0];
+				copepod_class.pop = copepod_class.pop +temp_double_pop[0];
 				
-				seaurchin_class.death [0] += temp_double_pop[1];
-				seaurchin_class.counter [0] += temp_double_pop[1];
-				seaurchin_class.pop +=temp_double_pop[1];
+				seaurchin_class.death [0] =  seaurchin_class.death[1]  + temp_double_pop[1];
+				seaurchin_class.counter [0] = seaurchin_class.counter[1]  + temp_double_pop[1];
+				seaurchin_class.pop = seaurchin_class.pop +temp_double_pop[1];
 				
 				
-				shrimp_class.death [0] += temp_double_pop[2];
-				shrimp_class.counter [0] += temp_double_pop[2];
-				shrimp_class.pop +=temp_double_pop[2];
+				shrimp_class.death [0] =shrimp_class.death [0]+ temp_double_pop[2];
+				shrimp_class.counter [0] =shrimp_class.counter [0] + temp_double_pop[2];
+				shrimp_class.pop =shrimp_class.pop  + temp_double_pop[2];
 				
-				crab_class.death [0] += temp_double_pop[3];
-				crab_class.counter [0] += temp_double_pop[3];
-				crab_class.pop +=temp_double_pop[3];
+				crab_class.death [0] =crab_class.death [0]+ temp_double_pop[3];
+				crab_class.counter [0] = crab_class.counter [0] +temp_double_pop[3];
+				crab_class.pop =crab_class.pop +temp_double_pop[3];
 				
-				bogue_class.death [0] += temp_double_pop[4];
-				bogue_class.counter [0] += temp_double_pop[4];
-				bogue_class.pop +=temp_double_pop[4];
+				bogue_class.death [0] =bogue_class.death [0] + temp_double_pop[4];
+				bogue_class.counter [0] =bogue_class.counter [0] + temp_double_pop[4];
+				bogue_class.pop =bogue_class.pop +temp_double_pop[4];
 				
 				
 			}

@@ -1001,7 +1001,7 @@ public class Spawn_Kill_processv9 : MonoBehaviour {
 					
 					food = copepod_class.pop +shrimp_class.pop + bogue_class.pop;
 					pops = creature.GetComponent<Animal_parents> ().pop; //population to feed
-					eating_counter = creature.GetComponent<Animal_Section_Jellyfish> ().Feed_items();
+	//				eating_counter = creature.GetComponent<Animal_Section_Jellyfish> ().Feed_items();
 						Debug.Log ("eating_counter " + eating_counter);
 
 					if(eating_counter == 10)

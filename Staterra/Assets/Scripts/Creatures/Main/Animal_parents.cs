@@ -110,9 +110,15 @@ public class Animal_parents {
 	public void reduce_Death(int limit, int iter){
 		//Time.timeScale = 0;
 		Debug.Log ("limit " + limit);
+
+		Debug.Log ("iter " + iter);
 		int temp = 0;
-		
-		for (int i = iter; i>=0; i++) {
+
+		if (limit == 0) {
+			zeroDeath();
+
+		}else
+		for (int i = iter-1; i>=0; i--) {
 
 			temp = death[i];
 
@@ -142,13 +148,14 @@ public class Animal_parents {
 			
 		}
 		
-		
+		Debug.Log ("end of reduce death");
 	}
 
 
 	public void reduce_Count(int limit, int iter){
 		//Time.timeScale = 0;
 		Debug.Log ("limit " + limit);
+		Debug.Log ("iter " + iter);
 		int temp = 0;
 		
 		for (int i = 0; i<iter; i++) {

@@ -113,7 +113,7 @@ public class Spawn_Kill_process10 : MonoBehaviour {
 	void Awake(){
 		for (int i =0; i <tier_stage.Length; i++) {
 			
-			tier_stage[i] = true;
+			tier_stage[i] = false;
 			
 		}
 		copepod_class.creature_object = (Copepod) as GameObject;
@@ -459,13 +459,13 @@ public class Spawn_Kill_process10 : MonoBehaviour {
 				if (shrimp_class.pop != 0) {
 					Debug.Log("feed");
 
-				shrimp_class.Feeding_Cycle(ref copepod_class);
+			//	shrimp_class.Feeding_Cycle(ref copepod_class);
 				}
 
 				if ( crab_class.pop != 0) {
 					Debug.Log("feed");
 
-				crab_class.Feeding_Cycle(ref seaurchin_class);
+			//	crab_class.Feeding_Cycle(ref seaurchin_class);
 				}
 				
 		//	}
