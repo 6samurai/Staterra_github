@@ -10,7 +10,7 @@ public class Animal_Section_SeaUrchin : Animal_parents {
 		public Animal_Section_SeaUrchin(){
 
 
-
+		base.max_pop = 200;
 		base.power=0 ;
 		base.defence=96f;
 		base.command_pnts = 2;

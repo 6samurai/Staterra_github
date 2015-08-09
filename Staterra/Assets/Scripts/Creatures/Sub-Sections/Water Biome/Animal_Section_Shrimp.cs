@@ -8,7 +8,7 @@ public class Animal_Section_Shrimp : Animal_parents {
 	public Animal_Section_Shrimp(){
 
 
-
+		base.max_pop = 100;
 		base.power=30 ;
 		base.defence=40f;
 		base.command_pnts = 4;

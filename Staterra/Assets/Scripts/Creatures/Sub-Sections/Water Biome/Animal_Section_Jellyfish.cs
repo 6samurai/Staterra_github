@@ -12,10 +12,10 @@ public class Animal_Section_Jellyfish : Animal_parents {
 	public Animal_Section_Jellyfish(){
 
 
-
+		base.max_pop = 50;
 		base.power=44;
 		base.defence=102;
-		base.command_pnts = 19;
+		base.command_pnts = 16;
 		base.repro_ratio = 3;
 		base.feed_ratio = 1;
 		base.death_limit = 7;
@@ -75,20 +75,187 @@ public class Animal_Section_Jellyfish : Animal_parents {
 		
 	}
 
+
+
+	public void Feeding_Cycle(ref Animal_Section_Shrimp food1, ref Animal_Section_Copepod food2, ref Animal_Section_Bogue food3){
+		
+		Animal_parents [] foods = new Animal_parents[3];
+		int pops = pop;
+		int lastindex = 0;
+		//		int food_counter = pops;
+		foods [0] = food1;
+		foods [1] = food2;
+		
+		
+		
+		if (food1.pop <= 0 && food2.pop <= 0 && pop > 0) {
+			Debug.Log ("zero");
+			
+			for (int i =0; i<pop; i++) {
+				
+				lastindex = alive.Count - 1;
+				if (lastindex > 0) {
+					GameObject.Destroy (alive [lastindex]);
+					alive.RemoveAt (lastindex);
+				} else if (lastindex == 0) {
+					
+					//lastindex = alive.Count - 1;
+					GameObject.Destroy (alive [lastindex]);
+					alive [lastindex] = null;
+				}
+			}
+			
+			zeroDeath ();
+			zeroCounter ();
+			pop = 0;
+		} else {
+			Debug.Log ("for each case");
+			Debug.Log ("foods contents" + foods);
+			foreach (Animal_parents food in foods) {
+				Debug.Log ("food parent" + food);
+				if(pops>0 && food.pop>0){
+					if (food.pop >= pops) {
+						Debug.Log("food greater than pop");
+						//normal eating (no loss from eating creature)
+						for (int i =0; i<pops; i++) {
+							
+							lastindex = food.alive.Count - 1;
+							if (lastindex > 0) {
+								GameObject.Destroy (food.alive [lastindex]);
+								food.alive.RemoveAt (lastindex);
+							} else if (lastindex == 0) {
+								
+								GameObject.Destroy (food.alive [lastindex]);
+								food.alive [lastindex] = null;
+							}
+						}
+						
+						pops = pops - food.pop;
+						
+						
+						food.pop = food.pop - pop;
+						food.counter [0] = food.counter [0] - pop;
+						
+						food.reduce_Death (pop, food.death_limit);
+						food.reduce_Count (pop, food.repro_ratio);
+						
+						
+						
+						
+					}else if (food.pop < pops && food.pop > 0) {
+						Debug.Log ("feed with few sources");
+						
+						//	copepod_class.pop = food.pop - pops;
+						
+						/*		for (int i =0; i<=pops-food.pop; i++) {
+							lastindex = alive.Count - 1;
+					
+							if (alive.Count > 0) {
+						
+								if (lastindex > 0) {
+									GameObject.Destroy (alive [lastindex]);
+									alive.RemoveAt (lastindex);
+								} else if (lastindex == 0) {
+							
+									GameObject.Destroy (alive [lastindex]);
+									alive [lastindex] = null;
+								}
+							}
+						}*/
+						
+						while (food.alive.Count >0) {
+							if (food.alive.Count > 1) {
+								GameObject.Destroy (food.alive [0]);
+								food.alive.RemoveAt (0);
+							} else if (food.alive.Count == 1) {
+								GameObject.Destroy (alive [lastindex]);
+								alive [lastindex] = null;
+							}
+							
+						}
+						
+						/*			pop = food.pop;
+						counter [0] = pop;
+						counter [1] = 0;
+						counter [2] = 0;
+				
+				
+						Debug.Log ("pops " + pops);
+						Debug.Log ("food " + food);
+						reduce_Death (pops - food.pop, death_limit);
+						reduce_Count (pops - food.pop, repro_ratio);*/
+						pops = pops - food.pop;
+						
+						food.pop = 0;
+						food.zeroCounter ();
+						
+						food.zeroDeath ();
+						//food_counter = food.pop - pops;
+						
+						
+						
+						
+					} 
+					
+					Debug.Log ("pop after eating " + pop);
+					
+					
+				}
+				
+			}
+			
+			if(pops>0){
+				
+				for (int i =0; i<=pops; i++) {
+					lastindex = alive.Count - 1;
+					
+					if (alive.Count > 0) {
+						
+						if (lastindex > 0) {
+							GameObject.Destroy (alive [lastindex]);
+							alive.RemoveAt (lastindex);
+						} else if (lastindex == 0) {
+							
+							GameObject.Destroy (alive [lastindex]);
+							alive [lastindex] = null;
+						}
+					}
+				}
+				
+				pop = pop - pops;
+				
+				//counter [1] = 0;
+				//counter [2] = 0;
+				zeroCounter();
+				counter [0] = pop;
+				
+				Debug.Log ("pops " + pops);
+				//	Debug.Log ("food " + food);
+				reduce_Death (pops, death_limit);
+				reduce_Count (pops, repro_ratio);
+				
+				
+			}
+		}
+	}
+	
+	
+	
+	
 	public void Repro_Cycle(Vector3 pos, Vector3 rot){
 		
 		int [] prev_count = new int[repro_ratio];
 		
 		//	Debug.Log ("before for");
-		for (int i =0; i<counter[1]; i++) {
+		for (int i =0; i<counter[repro_ratio -1]; i++) {
 			
 			GameObject new_creat = GameObject.Instantiate (creature_object, pos, Quaternion.Euler( rot))as GameObject;
 			alive.Add (new_creat);
 			
 		}
 		
-		death[0] = death[0] + counter[1];
-		pop = pop +	counter[1];
+		death[0] = death[0] + counter[repro_ratio -1];
+		pop = pop +	counter[repro_ratio -1];
 		
 		for (int i =0; i <repro_ratio; i++) {
 			prev_count[i] = counter[i];
@@ -110,111 +277,6 @@ public class Animal_Section_Jellyfish : Animal_parents {
 		Debug.Log ("pop after repro " + pop);
 	}
 
-	public void Feeding_Cycle(ref Animal_Section_SeaUrchin food){
-		Debug.Log ("eatne food pop" + food.pop);
-		Debug.Log ("feeder food pop" + pop);
-		int pops = pop;
-		int lastindex = 0;
-	
-		
-		if (food.pop >= pops ) {
-		
-			for (int i =0; i<pops; i++) {
-				
-				lastindex = food.alive.Count - 1;
-				if(lastindex>0){
-					GameObject.Destroy (food.alive [lastindex]);
-					food.alive.RemoveAt (lastindex);
-				}else if (lastindex ==0){
-					
-					GameObject.Destroy (food.alive [lastindex]);
-					food.alive[lastindex] = null;
-				}
-			}
-			
-			food.reduce_Death (food.pop - pop,food.death_limit);
-			food.pop = food.pop - pops;
-			food.counter[0] = food.counter[0] - pops;
-			
-			
-			
-			
-		} else if ( food.pop < pops && food.pop >0) {
-			Debug.Log("feed with few sources");
-			
-			//	copepod_class.pop = food.pop - pops;
-			
-			for (int i =0; i<=pops-food.pop; i++) {
-				
-				
-				if(alive.Count >0){
-					lastindex = alive.Count - 1;
-					if(lastindex>=0){
-						GameObject.Destroy (alive [lastindex]);
-						alive.RemoveAt (lastindex);
-					}else if (lastindex ==0){
-						
-						GameObject.Destroy (alive [lastindex]);
-						alive[lastindex] = null;
-					}
-				}
-				
-				
-			}
-			Debug.Log("before while");
-			while (food.alive.Count >=1){
-				if(food.alive.Count>2){
-					GameObject.Destroy (food.alive [0]);
-					food.alive.RemoveAt (0);
-				}else if (food.alive.Count==1){
-					Debug.Log("last case");
-					Debug.Log("at last pointer " + food.alive[0]);
-					GameObject.Destroy (food.alive [0]);
-					food.alive[0] = null;
-				}
-				
-			}
-			Debug.Log("after while");
-			pop = food.pop;
-			counter[0] = pop;
-			counter[1] = 0;
-			
-			
-			
-			Debug.Log("pops " + pops);
-			Debug.Log("food "+food);
-			reduce_Death(pops-food.pop,death_limit );
-			reduce_Count(pops-food.pop,repro_ratio );
-			
-			food.pop = 0;
-			food.zeroCounter();
-			
-			food.zeroDeath();
-
-		}else if(food.pop <=0 && pops>0){
-			Debug.Log("zero");
-			
-			for (int i =0; i<pops; i++) {
-				
-				lastindex = alive.Count - 1;
-				if(lastindex>0){
-					GameObject.Destroy (alive [lastindex]);
-					alive.RemoveAt (lastindex);
-				}else if (lastindex ==0){
-					
-					//lastindex = alive.Count - 1;
-					GameObject.Destroy (alive [lastindex]);
-					alive[lastindex] = null;
-				}
-			}
-			
-			zeroDeath();
-			zeroCounter();
-			pop = 0;
-		}
-		
-		Debug.Log ("pop after eating " + pop);
-	}
 
 
 }

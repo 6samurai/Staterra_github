@@ -28,7 +28,7 @@ public class Spawn_Kill_process11 : MonoBehaviour {
 	public GameObject Jellyfish;
 	public GameObject Bogue;
 	public GameObject Crab;
-	/*public GameObject Starfish;
+	public GameObject Starfish;
 	public GameObject Squid;
 	public GameObject Octopus;
 	public GameObject Seabass;
@@ -36,7 +36,7 @@ public class Spawn_Kill_process11 : MonoBehaviour {
 	public GameObject GulperShark;
 	public GameObject Tuna;
 	public GameObject Dolphin;
-	public GameObject HammerheadShark;*/
+	public GameObject HammerheadShark;
 	
 	
 /*	public GameObject copepod_spawn;
@@ -90,6 +90,8 @@ public class Spawn_Kill_process11 : MonoBehaviour {
 	public  Animal_Section_Tuna tuna_class = new Animal_Section_Tuna();
 	public  Animal_Section_HammerheadShark hammer_class = new Animal_Section_HammerheadShark();
 	public  Animal_Section_Dolphin dolphin_class = new Animal_Section_Dolphin();
+
+
 	public Animal_parents parents = new Animal_parents();
 	
 	
@@ -121,16 +123,16 @@ public class Spawn_Kill_process11 : MonoBehaviour {
 		shrimp_class.creature_object = (Shrimp) as GameObject;
 		crab_class.creature_object = (Crab) as GameObject;
 		bogue_class.creature_object = (Bogue) as GameObject;
-		//parents.creatures.Add (Copepod);
 		jellyfish_class.creature_object = (Jellyfish) as GameObject;
-		/*parents.creatures.Add (Copepod);
-		parents.creatures.Add (Copepod);
-		parents.creatures.Add (Copepod);
-		parents.creatures.Add (Copepod);
-		parents.creatures.Add (Copepod);
-		parents.creatures.Add (Copepod);
-		parents.creatures.Add (Copepod);
-		parents.creatures.Add (Copepod);*/
+		starfish_class.creature_object = (Starfish) as GameObject;
+		squid_class.creature_object = (Squid) as GameObject;
+		octopus_class.creature_object = (Octopus) as GameObject;
+		seabass_class.creature_object = (Seabass) as GameObject;
+		turtle_class.creature_object = (Turtle) as GameObject;
+		gulper_class.creature_object = (GulperShark) as GameObject;
+		tuna_class.creature_object = (Tuna) as GameObject;
+		hammer_class.creature_object = (HammerheadShark) as GameObject;
+		dolphin_class.creature_object = (Dolphin) as GameObject;
 
 
 
@@ -202,23 +204,7 @@ public class Spawn_Kill_process11 : MonoBehaviour {
 			shrimp_class.death[0]++;
 	
 		}
-		if(Input.GetKeyUp(KeyCode.F6)){// && timer>= Time.deltaTime + timer_limit){
-			if(tier_stage[1] ==false){
-				tiers[1,0] = true;
-				tiers[1,1] = false;
-				active = true;
-				tier_stage[1] = true;
-			}
-			timer2 = 0;
-			GameObject new_inst = Instantiate(Jellyfish, transform.position, transform.rotation) as GameObject;
-			
-			jellyfish_class.alive.Add(new_inst);
-			
-			jellyfish_class.pop ++;
-			jellyfish_class.counter[0] ++;
-			jellyfish_class.death[0]++;
 
-		}
 		
 		
 		if(Input.GetKeyUp(KeyCode.F4)){// && timer>= Time.deltaTime + timer_limit){
@@ -256,8 +242,189 @@ public class Spawn_Kill_process11 : MonoBehaviour {
 			bogue_class.death[0]++;
 
 		}
-		
-		
+
+		if(Input.GetKeyUp(KeyCode.F6)){// && timer>= Time.deltaTime + timer_limit){
+			
+			if(tier_stage[0] ==false){
+				tiers[0,0] = true;
+				tiers[0,1] = false;
+				active = true;
+				tier_stage[0] = true;
+			}
+			timer2 = 0;
+			GameObject new_inst = Instantiate(Starfish, transform.position, transform.rotation) as GameObject;
+			
+			starfish_class.alive.Add(new_inst);
+			
+			starfish_class.pop ++;
+			starfish_class.counter[0] ++;
+			starfish_class.death[0]++;
+			
+		}
+		if(Input.GetKeyUp(KeyCode.F7)){// && timer>= Time.deltaTime + timer_limit){
+			if(tier_stage[1] ==false){
+				tiers[1,0] = true;
+				tiers[1,1] = false;
+				active = true;
+				tier_stage[1] = true;
+			}
+			timer2 = 0;
+			GameObject new_inst = Instantiate(Jellyfish, transform.position, transform.rotation) as GameObject;
+			
+			jellyfish_class.alive.Add(new_inst);
+			
+			jellyfish_class.pop ++;
+			jellyfish_class.counter[0] ++;
+			jellyfish_class.death[0]++;
+			
+		}
+
+		if(Input.GetKeyUp(KeyCode.F8)){// && timer>= Time.deltaTime + timer_limit){
+			if(tier_stage[1] ==false){
+				tiers[1,0] = true;
+				tiers[1,1] = false;
+				active = true;
+				tier_stage[1] = true;
+			}
+			timer2 = 0;
+			GameObject new_inst = Instantiate(Octopus, transform.position, transform.rotation) as GameObject;
+			
+			octopus_class.alive.Add(new_inst);
+			
+			octopus_class.pop ++;
+			octopus_class.counter[0] ++;
+			octopus_class.death[0]++;
+			
+		}
+
+		if(Input.GetKeyUp(KeyCode.F9)){// && timer>= Time.deltaTime + timer_limit){
+			if(tier_stage[1] ==false){
+				tiers[1,0] = true;
+				tiers[1,1] = false;
+				active = true;
+				tier_stage[1] = true;
+			}
+			timer2 = 0;
+			GameObject new_inst = Instantiate(Squid, transform.position, transform.rotation) as GameObject;
+			
+			squid_class.alive.Add(new_inst);
+			
+			squid_class.pop ++;
+			squid_class.counter[0] ++;
+			squid_class.death[0]++;
+			
+		}
+
+		if(Input.GetKeyUp(KeyCode.F10)){// && timer>= Time.deltaTime + timer_limit){
+			if(tier_stage[1] ==false){
+				tiers[1,0] = true;
+				tiers[1,1] = false;
+				active = true;
+				tier_stage[1] = true;
+			}
+			timer2 = 0;
+			GameObject new_inst = Instantiate(Seabass, transform.position, transform.rotation) as GameObject;
+			
+			seabass_class.alive.Add(new_inst);
+			
+			seabass_class.pop ++;
+			seabass_class.counter[0] ++;
+			seabass_class.death[0]++;
+			
+		}
+
+		if(Input.GetKeyUp(KeyCode.F11)){// && timer>= Time.deltaTime + timer_limit){
+			if(tier_stage[2] ==false){
+				tiers[2,0] = true;
+				tiers[2,1] = false;
+				active = true;
+				tier_stage[2] = true;
+			}
+			timer2 = 0;
+			GameObject new_inst = Instantiate(Turtle, transform.position, transform.rotation) as GameObject;
+			
+			turtle_class.alive.Add(new_inst);
+			
+			turtle_class.pop ++;
+			turtle_class.counter[0] ++;
+			turtle_class.death[0]++;
+			
+		}
+
+		if(Input.GetKeyUp(KeyCode.F12)){// && timer>= Time.deltaTime + timer_limit){
+			if(tier_stage[2] ==false){
+				tiers[2,0] = true;
+				tiers[2,1] = false;
+				active = true;
+				tier_stage[2] = true;
+			}
+			timer2 = 0;
+			GameObject new_inst = Instantiate(GulperShark, transform.position, transform.rotation) as GameObject;
+			
+			gulper_class.alive.Add(new_inst);
+			
+			gulper_class.pop ++;
+			gulper_class.counter[0] ++;
+			gulper_class.death[0]++;
+			
+		}
+
+		if(Input.GetKeyUp(KeyCode.Q)){// && timer>= Time.deltaTime + timer_limit){
+			if(tier_stage[2] ==false){
+				tiers[2,0] = true;
+				tiers[2,1] = false;
+				active = true;
+				tier_stage[2] = true;
+			}
+			timer2 = 0;
+			GameObject new_inst = Instantiate(Tuna, transform.position, transform.rotation) as GameObject;
+			
+			tuna_class.alive.Add(new_inst);
+			
+			tuna_class.pop ++;
+			tuna_class.counter[0] ++;
+			tuna_class.death[0]++;
+			
+		}
+
+		if(Input.GetKeyUp(KeyCode.W)){// && timer>= Time.deltaTime + timer_limit){
+			if(tier_stage[3] ==false){
+				tiers[3,0] = true;
+				tiers[3,1] = false;
+				active = true;
+				tier_stage[3] = true;
+			}
+			timer2 = 0;
+			GameObject new_inst = Instantiate(HammerheadShark, transform.position, transform.rotation) as GameObject;
+			
+			hammer_class.alive.Add(new_inst);
+			
+			hammer_class.pop ++;
+			hammer_class.counter[0] ++;
+			hammer_class.death[0]++;
+			
+		}
+
+		if(Input.GetKeyUp(KeyCode.E)){// && timer>= Time.deltaTime + timer_limit){
+			if(tier_stage[3] ==false){
+				tiers[3,0] = true;
+				tiers[3,1] = false;
+				active = true;
+				tier_stage[3] = true;
+			}
+			timer2 = 0;
+			GameObject new_inst = Instantiate(Dolphin, transform.position, transform.rotation) as GameObject;
+			
+			dolphin_class.alive.Add(new_inst);
+			
+			dolphin_class.pop ++;
+			dolphin_class.counter[0] ++;
+			dolphin_class.death[0]++;
+			
+		}
+
+
+
 	}
 
 
@@ -272,8 +439,7 @@ public class Spawn_Kill_process11 : MonoBehaviour {
 			Debug.Log("iter [0,0] value" + tiers[0,0]);
 			Debug.Log("iter [0,1] value" + tiers[0,1]);
 			while ((tiers[0,0] == true && tiers[0,1] == false) || (tiers[1,0] == true && tiers[1,1] == false)||
-			       (tiers[2,0] == true && tiers[2,1] == false) || (tiers[3,0] == true && tiers[3,1] == false)||
-			       (tiers[4,0] == true && tiers[4,1] == false)) {
+			       (tiers[2,0] == true && tiers[2,1] == false) || (tiers[3,0] == true && tiers[3,1] == false)) {
 				Debug.Log("tier in while");
 				tiers [j, 0] = true; 
 				tiers [j, 1] = true;
@@ -303,7 +469,7 @@ public class Spawn_Kill_process11 : MonoBehaviour {
 			
 			
 			while ( (tiers[1,0] == true && tiers[1,1] == false)||(tiers[2,0] == true && tiers[2,1] == false) 
-			       ||(tiers[3,0] == true && tiers[3,1] == false)||(tiers[4,0] == true && tiers[4,1] == false)) {
+			       ||(tiers[3,0] == true && tiers[3,1] == false)) {
 				tiers [j, 0] = true; 
 				tiers [j, 1] = true;
 				
@@ -337,9 +503,108 @@ public class Spawn_Kill_process11 : MonoBehaviour {
 					temp_double_pop[4] = temp_double_pop[4] + bogue_class.pop;
 					
 				}
+
+				if(bogue_class.pop!=0){
+					for (int i =0; i<starfish_class.pop; i++) {
+						GameObject new_creat = Instantiate (Starfish, transform.position, transform.rotation) as GameObject;
+						starfish_class.alive.Add (new_creat);
+						
+					}
+					
+					temp_double_pop[5] = temp_double_pop[5] + starfish_class.pop;
+					
+				}
 				
 				
 			}
+
+
+			while ( (tiers[2,0] == true && tiers[2,1] == false) ||(tiers[3,0] == true && tiers[3,1] == false)) {
+				tiers [j, 0] = true; 
+				tiers [j, 1] = true;
+				
+				if(jellyfish_class.pop!=0){
+					Debug.Log("tier 2");
+					for (int i =0; i<jellyfish_class.pop; i++) {
+						GameObject new_creat = Instantiate (Jellyfish, transform.position, transform.rotation) as GameObject;
+						jellyfish_class.alive.Add (new_creat);
+						
+					}
+					temp_double_pop[6] = temp_double_pop[6] +jellyfish_class.pop;
+					
+				}
+				if(octopus_class.pop!=0){
+					for (int i =0; i<octopus_class.pop; i++) {
+						GameObject new_creat = Instantiate (Octopus, transform.position, transform.rotation) as GameObject;
+						octopus_class.alive.Add (new_creat);
+						
+					}
+					temp_double_pop[7] = temp_double_pop[7] + octopus_class.pop;
+					
+				}
+				
+			if(squid_class.pop!=0){
+				for (int i =0; i<squid_class.pop; i++) {
+					GameObject new_creat = Instantiate (Squid, transform.position, transform.rotation) as GameObject;
+					squid_class.alive.Add (new_creat);
+					
+				}
+				
+				temp_double_pop[8] = temp_double_pop[8] + squid_class.pop;
+				
+			}
+				if(seabass_class.pop!=0){
+					for (int i =0; i<seabass_class.pop; i++) {
+						GameObject new_creat = Instantiate (Seabass, transform.position, transform.rotation) as GameObject;
+						seabass_class.alive.Add (new_creat);
+						
+					}
+					
+					temp_double_pop[9] = temp_double_pop[9] + seabass_class.pop;
+					
+				}
+				
+			}
+
+
+			while ( (tiers[3,0] == true && tiers[3,1] == false)) {
+				tiers [j, 0] = true; 
+				tiers [j, 1] = true;
+				
+				if(turtle_class.pop!=0){
+					Debug.Log("tier 2");
+					for (int i =0; i<turtle_class.pop; i++) {
+						GameObject new_creat = Instantiate (Turtle, transform.position, transform.rotation) as GameObject;
+						turtle_class.alive.Add (new_creat);
+						
+					}
+					temp_double_pop[10] = temp_double_pop[10] +turtle_class.pop;
+					
+				}
+				if(gulper_class.pop!=0){
+					for (int i =0; i<octopus_class.pop; i++) {
+						GameObject new_creat = Instantiate (GulperShark, transform.position, transform.rotation) as GameObject;
+						gulper_class.alive.Add (new_creat);
+						
+					}
+					temp_double_pop[11] = temp_double_pop[11] + gulper_class.pop;
+					
+				}
+				
+				if(tuna_class.pop!=0){
+					for (int i =0; i<tuna_class.pop; i++) {
+						GameObject new_creat = Instantiate (Tuna, transform.position, transform.rotation) as GameObject;
+						tuna_class.alive.Add (new_creat);
+						
+					}
+					
+					temp_double_pop[12] = temp_double_pop[12] + tuna_class.pop;
+					
+				}
+
+				
+			}
+
 			
 		}
 		

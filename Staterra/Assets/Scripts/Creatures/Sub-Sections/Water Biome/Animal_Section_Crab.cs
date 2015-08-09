@@ -5,10 +5,10 @@ using System.Collections.Generic;
 public class Animal_Section_Crab : Animal_parents {
 
 		public Animal_Section_Crab(){
-
+		base.max_pop = 100;
 		base.power=10f ;
 		base.defence=162f;
-		base.command_pnts = 5;
+		base.command_pnts = 6;
 		base.repro_ratio = 2;
 		base.feed_ratio = 1;
 		base.death_limit = 5;

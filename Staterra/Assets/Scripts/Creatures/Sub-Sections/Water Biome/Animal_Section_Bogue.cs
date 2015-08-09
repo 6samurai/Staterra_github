@@ -6,16 +6,16 @@ using System;
 public class Animal_Section_Bogue : Animal_parents {
 	
 
-	public int [] food_chain = new int[2];
+	//public int [] food_chain = new int[2];
 	
 	//public int count_pop = 0;
 
 	public Animal_Section_Bogue(){
 
-
+		base.max_pop = 100;
 		base.power=30f ;
 		base.defence=87f;
-		base.command_pnts = 2;
+		base.command_pnts = 8;
 		base.repro_ratio = 3;
 		base.feed_ratio = 1;
 		base.death_limit = 7;

@@ -19,7 +19,7 @@ public class Animal_Section_Copepod : Animal_parents {
 	public Animal_Section_Copepod(){
 
 
-
+		base.max_pop = 200;
 		base.power=0 ;
 		base.defence=30f;
 		base.command_pnts = 1;

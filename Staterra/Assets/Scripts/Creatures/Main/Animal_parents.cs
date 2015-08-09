@@ -7,7 +7,7 @@ public class Animal_parents {
 
 	//public class Animals 
 	//{
-
+		public int max_pop;
 		public float power ;
 		public float defence;
 		public int command_pnts;
