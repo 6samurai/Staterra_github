@@ -46,7 +46,10 @@
 	</Reference>
   </ItemGroup>
   <ItemGroup>
+     <Compile Include="Assets\LookAtObject.cs" />
+     <Compile Include="Assets\LookAtObjectv2.cs" />
      <Compile Include="Assets\Pixelplacement\iTweenPath\iTweenPath.cs" />
+     <Compile Include="Assets\Rotate.cs" />
      <Compile Include="Assets\Scripts\Camera controls\Move_Camera.cs" />
      <Compile Include="Assets\Scripts\Creatures\Main\Animal_parents.cs" />
      <Compile Include="Assets\Scripts\Creatures\Main\DebugStreamer.cs" />
@@ -108,11 +111,14 @@
      <Compile Include="Assets\iTweenExamples\MemoryGame\Scripts\BoardControl.cs" />
      <Compile Include="Assets\iTweenExamples\MemoryGame\Scripts\BoxControl.cs" />
      <Compile Include="Assets\iTweenExamples\OrbitExample\Scripts\Path.cs" />
+     <Compile Include="Assets\iTweenExamples\OrbitExample\Scripts\Pathv2.cs" />
      <Compile Include="Assets\iTweenExamples\OrbitExample\Scripts\Point.cs" />
      <Compile Include="Assets\iTweenExamples\PathControlledCharacter\Scripts\Controller.cs" />
      <Compile Include="Assets\iTweenExamples\PathControlledCharacter\Scripts\PathPoint.cs" />
      <Compile Include="Assets\iTweenExamples\PathExample\Scripts\PathCameraController.cs" />
      <Compile Include="Assets\iTweenExamples\PathExample\Scripts\PathExample.cs" />
+     <Compile Include="Assets\iTweenExamples\PathExample\Scripts\PathExamplev2.cs" />
+     <Compile Include="Assets\iTweenExamples\PathExample\Scripts\PathExamplev3.cs" />
      <Compile Include="Assets\iTweenExamples\Platforms\Scripts\CameraController.cs" />
      <Compile Include="Assets\iTweenExamples\Platforms\Scripts\CharController.cs" />
      <Compile Include="Assets\iTweenExamples\Platforms\Scripts\DeathZone.cs" />

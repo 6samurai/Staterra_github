@@ -9,7 +9,7 @@ public class Path : MonoBehaviour{
 	}
 	
 	void Start(){
-		iTween.MoveTo(gameObject,iTween.Hash("path",path,"time",1,"easetype",iTween.EaseType.linear,"looptype",iTween.LoopType.loop,"movetopath",false));
+		iTween.MoveTo(gameObject,iTween.Hash("path",path,"time",2,"easetype",iTween.EaseType.linear,"looptype",iTween.LoopType.loop,"movetopath",false));
 	}
 }
 
