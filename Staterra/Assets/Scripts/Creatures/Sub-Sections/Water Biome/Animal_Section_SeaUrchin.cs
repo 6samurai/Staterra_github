@@ -141,7 +141,7 @@ public class Animal_Section_SeaUrchin : Animal_parents {
 			zeroCounter();
 			
 		}
-		Debug.Log ("pop after eating " + pop);
+	//	Debug.Log ("pop after eating " + pop);
 	}
 
 
@@ -165,7 +165,7 @@ public class Animal_Section_SeaUrchin : Animal_parents {
 		counter[0] = prev_count * 2;
 		
 		death[0] = prev_count;
-		Debug.Log ("pop after repro " + pop);
+	//	Debug.Log ("pop after repro " + pop);
 	}
 
 

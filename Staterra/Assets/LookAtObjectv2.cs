@@ -24,10 +24,16 @@ public class LookAtObjectv2 : MonoBehaviour {
 
 		}
 
+		Vector3 relativePos = axes[index].transform.position - transform.position;
+		Quaternion rotation = Quaternion.LookRotation(relativePos);
+		transform.rotation = rotation;
 
-		Debug.Log ("index  " + index);
-		Debug.Log ("object " + axes [index]);
-		transform.LookAt(new Vector3(0,axes[index].transform.position.y, axes[index].transform.position.z));
+		
+
+	//	Debug.Log ("index  " + index);
+	//	Debug.Log ("object " + axes [index]);
+		//transform.LookAt(new Vector3(axes[index].transform.position.x,transform.rotation.y, axes[index].transform.position.z));
+	//	transform.LookAt (axes [index].transform);
 		distance = 10000;
 	}
 

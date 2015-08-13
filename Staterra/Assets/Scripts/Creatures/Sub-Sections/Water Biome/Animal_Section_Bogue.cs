@@ -49,36 +49,12 @@ public class Animal_Section_Bogue : Animal_parents {
 		Debug.Log ("after for loop death");
 		pop = pop  - death[6];
 		
-		reduce_Count (death [6], death_limit);
-		/*for (int i =0; i<3; i++) {
-			if (i == 0 && counter [0] >= death [6]) {
-				counter [i] = counter [i] - death [6];
-				break;
-			} else if (i != 0) {
-				
-				death [6] = death [6] - counter [i - 1];
-				
-				if (death [6] == 0) {
-					counter [i - 1] = 0;
-					
-					break;
-					
-					
-				} else if (death [6] > 0) {
-					counter [i - 1] = 0;
-					
-				} else if (death [6] < 0) {
-					counter [i - 1] = death [6] * -1;
-					death [6] = 0;
-				}
-			}
-		}*/
-		
-		
+		reduce_Count (death [6], repro_ratio);
+
 		shift_Values_death(6);
 		
 		
-		Debug.Log ("pop after death " + pop);
+	//	Debug.Log ("pop after death " + pop);
 		
 	}
 
@@ -108,7 +84,7 @@ public class Animal_Section_Bogue : Animal_parents {
 		counter [1] = prev_count [0];
 		counter [2] = prev_count [1];
 		//	death[0] = prev_count[1];
-		Debug.Log ("pop after repro " + pop);
+	//	Debug.Log ("pop after repro " + pop);
 	}
 
 

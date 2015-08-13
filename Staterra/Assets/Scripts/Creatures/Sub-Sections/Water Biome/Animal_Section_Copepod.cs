@@ -40,7 +40,7 @@ public class Animal_Section_Copepod : Animal_parents {
 
 	public void Death_Cycle(int blank){
 
-		Debug.Log (" cope pop before death " + pop);
+	//	Debug.Log (" cope pop before death " + pop);
 
 		int lastindex = 0;
 
@@ -89,7 +89,7 @@ public class Animal_Section_Copepod : Animal_parents {
 		shift_Values_death(3);
 
 
-		Debug.Log (" cope pop after death " + pop);
+		//Debug.Log (" cope pop after death " + pop);
 
 	}
 
@@ -105,10 +105,10 @@ public class Animal_Section_Copepod : Animal_parents {
 			food.pop = food.pop - pops;
 			//return
 		} else if (food.pop < pops) {
-			Debug.Log ("pop" + pops );
-			Debug.Log ("food " + food.pop);
-			Debug.Log ("food less pop" + (pops - food.pop));
-			Debug.Log ("index counter" + (alive.Count - 1));			
+		//	Debug.Log ("pop" + pops );
+	//		Debug.Log ("food " + food.pop);
+		//	Debug.Log ("food less pop" + (pops - food.pop));
+		//	Debug.Log ("index counter" + (alive.Count - 1));			
 			for (int i =0; i<=	pops-food.pop; i++) {
 				lastindex = alive.Count - 1;
 
@@ -124,7 +124,7 @@ public class Animal_Section_Copepod : Animal_parents {
 					alive[lastindex] = null;
 				}
 			}
-			Debug.Log(" AFTER DESTORY");
+		//	Debug.Log(" AFTER DESTORY");
 			
 			pop = food.pop;
 			food.pop = 0;
@@ -134,7 +134,7 @@ public class Animal_Section_Copepod : Animal_parents {
 			counter[0] = pop;
 
 			
-			Debug.Log(" BEFORE COUNT");
+		//	Debug.Log(" BEFORE COUNT");
 			//food_counter = pops - food;
 			for (int i =3; i>=0;i--){
 				
@@ -171,8 +171,8 @@ public class Animal_Section_Copepod : Animal_parents {
 		}
 
 		
-		Debug.Log ("pop after eating " + pop);
-		Debug.Log ("pop after eating " + alive);
+	//	Debug.Log ("pop after eating " + pop);
+	//	Debug.Log ("pop after eating " + alive);
 		if (pop == 0) {
 
 
@@ -203,7 +203,7 @@ public class Animal_Section_Copepod : Animal_parents {
 			counter[0] = prev_count * 2;
 			//	creature.GetComponent<Animal_Section_Copepod> ().counter[1] = prev_count[0];
 			death[0] = prev_count;
-		Debug.Log ("pop after repro " + pop);
+	//	Debug.Log ("pop after repro " + pop);
 		}
 		
 }

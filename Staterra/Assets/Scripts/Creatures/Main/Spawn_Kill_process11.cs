@@ -627,12 +627,24 @@ public class Spawn_Kill_process11 : MonoBehaviour {
 		Create_Creature ();
 		
 		timer = timer + Time.deltaTime;
+		DebugStreamer.AddMessage(bogue_class.counter[0]);
+		DebugStreamer.AddMessage(bogue_class.counter[1]);
+		DebugStreamer.AddMessage(bogue_class.counter[2]);
+		DebugStreamer.AddMessage(bogue_class.death[0]);
+		DebugStreamer.AddMessage(bogue_class.death[1]);
+		DebugStreamer.AddMessage(bogue_class.death[2]);
+		DebugStreamer.AddMessage(bogue_class.death[3]);
+		DebugStreamer.AddMessage(bogue_class.death[4]);
+		DebugStreamer.AddMessage(bogue_class.death[5]);
+		DebugStreamer.AddMessage(bogue_class.death[6]);
+		DebugStreamer.AddMessage(bogue_class.pop);
 
-		DebugStreamer.AddMessage(copepod_class.pop);
+		/*DebugStreamer.AddMessage(copepod_class.pop);
 		DebugStreamer.AddMessage(seaurchin_class.pop);
 		DebugStreamer.AddMessage(shrimp_class.pop);
 		DebugStreamer.AddMessage(crab_class.pop);
-		DebugStreamer.AddMessage(count);
+		DebugStreamer.AddMessage(bogue_class.pop);
+		DebugStreamer.AddMessage(count);*/
 		//if (timer >= Time.deltaTime + timer_limit) {
 		if (Input.GetKeyUp (KeyCode.Space)) {
 			count++;
@@ -712,8 +724,7 @@ public class Spawn_Kill_process11 : MonoBehaviour {
 			//	}
 			
 			//Feeding---------------------------------------------------------------------------------------------------------------------------------
-		//	for (int i =0; i <15; i++) {
-				//	Debug.Log ("after check");
+	
 				
 				//copepod =========================================================================
 				//	if(creature.GetComponent<Animal_parents>().pop !=0){
@@ -722,22 +733,17 @@ public class Spawn_Kill_process11 : MonoBehaviour {
 
 				copepod_class.Feeding_Cycle(ref plankton_class);
 
-			//	 creatures = GameObject.FindGameObjectsWithTag("Copepod");
-			///	Debug.Log("creatures size " + creatures.Length);
 		//		if(count ==3)
 			//	Time.timeScale = 0;
 					
-					
-					//DebugStreamer.AddMessage(plankton_class.pop);
-					//DebugStreamer.AddMessage(copepod_class.pop);
+			
 				}
 
 				if ( seaurchin_class.pop != 0) {
 					Debug.Log("feed");
 					seaurchin_class.Feeding_Cycle(ref plankton_class);
 					
-					//DebugStreamer.AddMessage(plankton_class.pop);
-					//DebugStreamer.AddMessage(copepod_class.pop);
+
 				}
 
 				if (shrimp_class.pop != 0) {
@@ -767,7 +773,7 @@ public class Spawn_Kill_process11 : MonoBehaviour {
 				
 				//copepod =========================================================================
 				//	if(creature.GetComponent<Animal_parents>().pop !=0){
-				if ( copepod_class.pop != 0) {
+				if ( copepod_class.pop != 0 && copepod_class.pop <copepod_class.max_pop) {
 					Debug.Log("repro");
 					copepod_class.Repro_Cycle (pos,rotate);
 					
@@ -775,7 +781,7 @@ public class Spawn_Kill_process11 : MonoBehaviour {
 					
 				}
 
-				if ( seaurchin_class.pop != 0) {
+				if ( seaurchin_class.pop != 0 &&  seaurchin_class.pop< seaurchin_class.max_pop) {
 					Debug.Log("repro");
 					seaurchin_class.Repro_Cycle (pos,rotate);
 					
@@ -783,7 +789,7 @@ public class Spawn_Kill_process11 : MonoBehaviour {
 					
 				}
 
-				if (shrimp_class.pop != 0) {
+				if (shrimp_class.pop != 0 && shrimp_class.pop< shrimp_class.max_pop) {
 					Debug.Log("repro");
 					shrimp_class.Repro_Cycle (pos,rotate);
 					
@@ -791,14 +797,14 @@ public class Spawn_Kill_process11 : MonoBehaviour {
 					
 				}
 
-				if ( crab_class.pop != 0) {
+				if ( crab_class.pop != 0 && crab_class.pop< crab_class.max_pop) {
 					Debug.Log("repro");
 					crab_class.Repro_Cycle (pos,rotate);
 					
 					
 					
 				}
-			if ( bogue_class.pop != 0) {
+			if ( bogue_class.pop != 0 && bogue_class.pop <bogue_class.max_pop) {
 				Debug.Log("repro");
 				bogue_class.Repro_Cycle (pos,rotate);
 				

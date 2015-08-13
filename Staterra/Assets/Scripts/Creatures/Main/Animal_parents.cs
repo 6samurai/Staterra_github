@@ -214,34 +214,35 @@ public void maxPop(){
 
 			Debug.Log ("reduce death");
 		int extra = pop - max_pop;
+
+			if (extra > 0) {
 			int lastindex = 0;
-			
 			for (int i =0; i< extra; i++) {
 				
 				lastindex = alive.Count - 1;
-				if(lastindex>0){
+				if (lastindex > 0) {
 					GameObject.Destroy (alive [lastindex]);
 					alive.RemoveAt (lastindex);
-				}else if (lastindex ==0){
+				} else if (lastindex == 0) {
 					
 					//lastindex = alive.Count - 1;
 					GameObject.Destroy (alive [lastindex]);
-					alive[lastindex] = null;
+					alive [lastindex] = null;
 				}
 			}
 			Debug.Log ("after for loop death");
-			pop = pop  - extra;
+			pop = pop - extra;
 			
 			reduce_Count (extra, death_limit);
-		reduce_Death (extra, death_limit);
+			reduce_Death (extra, death_limit);
 			
 			
-			shift_Values_death(6);
+			shift_Values_death (6);
 			
 			
 			Debug.Log ("pop after death " + pop);
 			
-		}
+		} 
 
 	}
 }
